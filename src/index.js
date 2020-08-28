@@ -1,11 +1,12 @@
 const contextualCollection = function (identifier) {
-    var proto = {
+    const methods = {
         keyProperty: () => identifier,
 
         // maintenance functions
 
         add: function (data) {
-            this[data[identifier].toString()] = data
+            const key = data[identifier]
+            this.set(key, data)
         },
         delete: function (key) {
             delete this[key.toString()]
@@ -21,6 +22,14 @@ const contextualCollection = function (identifier) {
         },
         set: function (key, data) {
             this[key.toString()] = data
+        },
+        toggle: function (data) {
+            const key = data[identifier]
+            if (this.has(key)) {
+                this.delete(key)
+            } else {
+                this.set(key, data)
+            }
         },
 
         // return arrays
@@ -38,7 +47,7 @@ const contextualCollection = function (identifier) {
         // TODO:
         // combine.plus, dissect . share, exceptThis, except / minuas
     }
-    return Object.create(proto)
+    return Object.create(methods)
 }
 
 export default contextualCollection

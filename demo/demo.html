@@ -8,14 +8,27 @@
   <body>
     <h3>contextualCollection</h3>
     <script>
-var cc = contextualCollection('id')
+const cc = contextualCollection('id')
 
-cc.add({id: 10, text: 'tenting'})
-cc.add({id: 20, text: 'tweaky'})
-cc.add({id: 30, text: 'thirsty'})
+const tenting = {id: 10, text: 'tenting'}
+const tweaky = {id: 20, text: 'tweaky'}
+const thirsty = {id: 30, text: 'thirsty'}
 
-console.log('keys', cc.keys())
-console.log('values', cc.values())
+cc.add(tenting)
+cc.add(tweaky)
+cc.add(thirsty)
+
+console.log('keys', JSON.stringify(cc.keys()))
+console.log('values', JSON.stringify(cc.values()))
+
+cc.toggle(tenting)
+
+console.log('keys after toggle existing member', JSON.stringify(cc.keys()))
+
+cc.toggle(tenting)
+
+console.log('keys after toggling again', JSON.stringify(cc.keys()))
+
     </script>
 
   </body>
