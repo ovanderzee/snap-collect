@@ -1,0 +1,2 @@
+export default function(t){var e={keyProperty:()=>t,add:function(e){this[e[t].toString()]=e},delete:function(t){delete this[t.toString()]},get:function(t){return this[t.toString()]},has:function(t){return Object.prototype.hasOwnProperty.call(this,t.toString())},get length(){return Object.keys(this).length},set:function(t,e){this[t.toString()]=e},entries:function(){return Object.entries(this)},keys:function(){return Object.keys(this)},values:function(){return Object.values(this)}};return Object.create(e)}
+//# sourceMappingURL=contextualCollection.js.map

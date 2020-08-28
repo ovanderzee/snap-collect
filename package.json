@@ -1,0 +1,47 @@
+{
+  "name": "contextual-collection",
+  "version": "1.0.0",
+  "description": "keep subsets of data collections without needing to modify the data itself",
+  "main": "dist/contextualCollection.js",
+  "module": "module/contextualCollection.js",
+  "scripts": {
+    "prebuild": "cf dist module && prettier './src/**/*.js' --write",
+    "build": "rollup --config",
+    "coverage": "cf coverage && jest --coverage",
+    "once": "npm run test && npm run build",
+    "pretest": "eslint src/*.js",
+    "test": "exit 0",
+    "watch": "onchange --initial \"src/**/*.js\" -- npm run once --silent"
+  },
+  "keywords": [
+    "objects",
+    "collection",
+    "front-end"
+  ],
+  "author": "Onno van der Zee",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ovanderzee/contextual-collection.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ovanderzee/contextual-collection/issues"
+  },
+  "homepage": "https://github.com/ovanderzee/contextual-collection#readme",
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "clear-folder": "^2.0.0",
+    "coveralls": "^3.1.0",
+    "eslint": "^7.2.0",
+    "eslint-plugin-jasmine": "^4.1.1",
+    "eslint-plugin-jest": "^23.13.2",
+    "jest": "^26.0.1",
+    "onchange": "^7.0.2",
+    "prettier": "^2.0.5",
+    "rollup": "^2.16.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-terser": "^6.1.0"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>contextual-collection</title>
+    <script src="../dist/contextualCollection.js"></script>
+  </head>
+  <body>
+    <h3>contextualCollection</h3>
+    <script>
+var cc = contextualCollection('id')
+
+cc.add({id: 10, text: 'tenting'})
+cc.add({id: 20, text: 'tweaky'})
+cc.add({id: 30, text: 'thirsty'})
+
+console.log('keys', cc.keys())
+console.log('values', cc.values())
+    </script>
+
+  </body>
+</html>
