@@ -13,6 +13,8 @@ const cc = contextualCollection('id')
 const tenting = {id: 10, text: 'tenting'}
 const tweaky = {id: 20, text: 'tweaky'}
 const thirsty = {id: 30, text: 'thirsty'}
+const forthy = {id: 40, text: 'forthy'}
+const viffy = {id: 50, text: 'viffy'}
 
 cc.add(tenting)
 cc.add(tweaky)
@@ -28,6 +30,28 @@ console.log('keys after toggle existing member', JSON.stringify(cc.keys()))
 cc.toggle(tenting)
 
 console.log('keys after toggling again', JSON.stringify(cc.keys()))
+
+const foreignArray = [tweaky,thirsty,forthy,viffy]
+const mutualA = cc.intersection(foreignArray)
+
+console.log('mutual array from foreignArray', JSON.stringify(mutualA))
+
+const foreignObject = contextualCollection('id')
+foreignObject.add(tweaky)
+foreignObject.add(thirsty)
+foreignObject.add(forthy)
+foreignObject.add(viffy)
+const mutualO = cc.intersection(foreignObject)
+
+console.log('mutual array from foreignObject', JSON.stringify(mutualO))
+
+const commonA = cc.combination(foreignArray)
+
+console.log('common array with foreignArray', JSON.stringify(commonA))
+
+const commonO = cc.combination(foreignObject)
+
+console.log('common array with foreignObject', JSON.stringify(commonO))
 
     </script>
 

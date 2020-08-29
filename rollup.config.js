@@ -1,4 +1,5 @@
 // rollup.config.js
+import resolve from '@rollup/plugin-node-resolve'
 import { terser } from 'rollup-plugin-terser'
 
 const name = 'contextualCollection'
@@ -20,6 +21,7 @@ export default {
     },
   ],
   plugins: [
+    resolve(),
     terser(),
   ],
 }

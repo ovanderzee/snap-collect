@@ -1,6 +1,34 @@
+import { arrayIntersection, arrayCombination } from 'my-lib'
+
+/**
+ * Convert an array in object with our type of keys
+ * @private
+ * @param {Object[]} foreignArray - to convert
+ * @return {Object} keyed object
+ */
+const arrayToPseudoObject = function (foreignArray, identifier) {
+    const foreignObject = Object.create({ keyIdentifier: identifier })
+    foreignArray.forEach((data) => {
+        foreignObject[data[identifier].toString()] = data
+    })
+    return foreignObject
+}
+
+/**
+ * Find our type of keys in an array or in a contextualCollection
+ * @private
+ * @param {Object} foreignObject of our (pseudo) type - to relate with
+ * @return {Object[]}
+ */
+const getForeignKeys = function (foreignItem) {
+    if (foreignItem.keyIdentifier) {
+        return Object.keys(foreignItem)
+    }
+}
+
 const contextualCollection = function (identifier) {
     const methods = {
-        keyProperty: () => identifier,
+        keyIdentifier: identifier,
 
         // maintenance functions
 
@@ -44,8 +72,49 @@ const contextualCollection = function (identifier) {
             return Object.values(this)
         },
 
+        /**
+         * Find all records from both arrays by identifier,
+         * with deduplication
+         * @param {Object[] || contextualCollection} foreignItem
+         * @return {Object[]} common values, deduplicated
+         */
+        combination: function (foreignItem) {
+            if (Array.isArray(foreignItem)) {
+                foreignItem = arrayToPseudoObject(foreignItem, identifier)
+            }
+            const foreignKeys = getForeignKeys(foreignItem)
+            if (!foreignKeys) return
+            const commonKeys = arrayCombination(this.keys(), foreignKeys)
+            const commons = commonKeys.map((common) => {
+                const fromHere = this.get(common.toString())
+                const fromAbroad = foreignItem[common]
+                return fromHere || fromAbroad
+            })
+            return commons
+        },
+
+        /**
+         * Find records appearing in both own collection and in foreign array
+         * by comparing their identifier,
+         * with deduplication
+         * @param {Object[] || contextualCollection} foreignItem
+         * @return {Object[]} mutual values, deduplicated
+         */
+        intersection: function (foreignItem) {
+            if (Array.isArray(foreignItem)) {
+                foreignItem = arrayToPseudoObject(foreignItem, identifier)
+            }
+            const foreignKeys = getForeignKeys(foreignItem)
+            if (!foreignKeys) return
+            const mutualKeys = arrayIntersection(this.keys(), foreignKeys)
+            const mutuals = mutualKeys.map((mutual) =>
+                this.get(mutual.toString()),
+            )
+            return mutuals
+        },
+
         // TODO:
-        // combine.plus, dissect . share, exceptThis, except / minuas
+        //   except/excepting
     }
     return Object.create(methods)
 }
