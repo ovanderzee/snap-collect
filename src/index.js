@@ -1,30 +1,5 @@
+import { arrayToPseudoObject, getForeignKeys } from './functions'
 import { arrayIntersection, arrayCombination } from 'my-lib'
-
-/**
- * Convert an array in object with our type of keys
- * @private
- * @param {Object[]} foreignArray - to convert
- * @return {Object} keyed object
- */
-const arrayToPseudoObject = function (foreignArray, identifier) {
-    const foreignObject = Object.create({ keyIdentifier: identifier })
-    foreignArray.forEach((data) => {
-        foreignObject[data[identifier].toString()] = data
-    })
-    return foreignObject
-}
-
-/**
- * Find our type of keys in an array or in a snapCollect
- * @private
- * @param {Object} foreignObject of our (pseudo) type - to relate with
- * @return {Object[]}
- */
-const getForeignKeys = function (foreignItem) {
-    if (foreignItem.keyIdentifier) {
-        return Object.keys(foreignItem)
-    }
-}
 
 const snapCollect = function (identifier) {
     const methods = {
@@ -32,9 +7,9 @@ const snapCollect = function (identifier) {
 
         // maintenance functions
 
-        add: function (data) {
-            const key = data[identifier]
-            this.set(key, data)
+        add: function () {
+            const dataList = Array.from(arguments)
+            dataList.forEach((data) => this.set(data[identifier], data))
         },
         delete: function (key) {
             delete this[key.toString()]
@@ -80,9 +55,9 @@ const snapCollect = function (identifier) {
          */
         combination: function (foreignItem) {
             if (Array.isArray(foreignItem)) {
-                foreignItem = arrayToPseudoObject(foreignItem, identifier)
+                foreignItem = arrayToPseudoObject.call(this, foreignItem)
             }
-            const foreignKeys = getForeignKeys(foreignItem)
+            const foreignKeys = getForeignKeys.call(this, foreignItem)
             if (!foreignKeys) return
             const commonKeys = arrayCombination(this.keys(), foreignKeys)
             const commons = commonKeys.map((common) => {
@@ -102,9 +77,9 @@ const snapCollect = function (identifier) {
          */
         intersection: function (foreignItem) {
             if (Array.isArray(foreignItem)) {
-                foreignItem = arrayToPseudoObject(foreignItem, identifier)
+                foreignItem = arrayToPseudoObject.call(this, foreignItem)
             }
-            const foreignKeys = getForeignKeys(foreignItem)
+            const foreignKeys = getForeignKeys.call(this, foreignItem)
             if (!foreignKeys) return
             const mutualKeys = arrayIntersection(this.keys(), foreignKeys)
             const mutuals = mutualKeys.map((mutual) =>
@@ -116,7 +91,8 @@ const snapCollect = function (identifier) {
         // TODO:
         //   except/excepting
     }
+
     return Object.create(methods)
 }
-// plain snap subsets  simple-subset
+
 export default snapCollect
