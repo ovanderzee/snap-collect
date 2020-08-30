@@ -1,9 +1,9 @@
 {
-  "name": "contextual-collection",
+  "name": "snap-collect",
   "version": "1.0.0",
   "description": "keep subsets of data collections without needing to modify the data itself",
-  "main": "dist/contextualCollection.js",
-  "module": "module/contextualCollection.js",
+  "main": "dist/snapCollect.js",
+  "module": "module/snapCollect.js",
   "scripts": {
     "prebuild": "cf dist module && prettier './src/**/*.js' --write",
     "build": "rollup --config",
@@ -22,12 +22,12 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ovanderzee/contextual-collection.git"
+    "url": "git+https://github.com/ovanderzee/snap-collect.git"
   },
   "bugs": {
-    "url": "https://github.com/ovanderzee/contextual-collection/issues"
+    "url": "https://github.com/ovanderzee/snap-collect/issues"
   },
-  "homepage": "https://github.com/ovanderzee/contextual-collection#readme",
+  "homepage": "https://github.com/ovanderzee/snap-collect#readme",
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",

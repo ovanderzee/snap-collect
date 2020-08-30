@@ -15,7 +15,7 @@ const arrayToPseudoObject = function (foreignArray, identifier) {
 }
 
 /**
- * Find our type of keys in an array or in a contextualCollection
+ * Find our type of keys in an array or in a snapCollect
  * @private
  * @param {Object} foreignObject of our (pseudo) type - to relate with
  * @return {Object[]}
@@ -26,7 +26,7 @@ const getForeignKeys = function (foreignItem) {
     }
 }
 
-const contextualCollection = function (identifier) {
+const snapCollect = function (identifier) {
     const methods = {
         keyIdentifier: identifier,
 
@@ -75,7 +75,7 @@ const contextualCollection = function (identifier) {
         /**
          * Find all records from both arrays by identifier,
          * with deduplication
-         * @param {Object[] || contextualCollection} foreignItem
+         * @param {Object[] || snapCollect} foreignItem
          * @return {Object[]} common values, deduplicated
          */
         combination: function (foreignItem) {
@@ -97,7 +97,7 @@ const contextualCollection = function (identifier) {
          * Find records appearing in both own collection and in foreign array
          * by comparing their identifier,
          * with deduplication
-         * @param {Object[] || contextualCollection} foreignItem
+         * @param {Object[] || snapCollect} foreignItem
          * @return {Object[]} mutual values, deduplicated
          */
         intersection: function (foreignItem) {
@@ -118,5 +118,5 @@ const contextualCollection = function (identifier) {
     }
     return Object.create(methods)
 }
-
-export default contextualCollection
+// plain snap subsets  simple-subset
+export default snapCollect

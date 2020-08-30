@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>contextual-collection</title>
-    <script src="../dist/contextualCollection.js"></script>
+    <title>snap-collect</title>
+    <script src="../dist/snapCollect.js"></script>
   </head>
   <body>
-    <h3>contextualCollection</h3>
+    <h3>snapCollect</h3>
     <script>
-const cc = contextualCollection('id')
+const cc = snapCollect('id')
 
 const tenting = {id: 10, text: 'tenting'}
 const tweaky = {id: 20, text: 'tweaky'}
@@ -36,7 +36,7 @@ const mutualA = cc.intersection(foreignArray)
 
 console.log('mutual array from foreignArray', JSON.stringify(mutualA))
 
-const foreignObject = contextualCollection('id')
+const foreignObject = snapCollect('id')
 foreignObject.add(tweaky)
 foreignObject.add(thirsty)
 foreignObject.add(forthy)

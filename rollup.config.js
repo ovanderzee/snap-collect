@@ -2,7 +2,7 @@
 import resolve from '@rollup/plugin-node-resolve'
 import { terser } from 'rollup-plugin-terser'
 
-const name = 'contextualCollection'
+const name = 'snapCollect'
 
 export default {
   input: `src/index.js`,

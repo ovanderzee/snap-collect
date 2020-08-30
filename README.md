@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/ovanderzee/my-lib.svg?branch=master)](https://travis-ci.org/ovanderzee/contextual-collection)
-[![Coverage Status](https://coveralls.io/repos/github/ovanderzee/my-lib/badge.svg?branch=master)](https://coveralls.io/github/ovanderzee/contextual-collection?branch=master)
+[![Build Status](https://travis-ci.org/ovanderzee/my-lib.svg?branch=master)](https://travis-ci.org/ovanderzee/snap-collect)
+[![Coverage Status](https://coveralls.io/repos/github/ovanderzee/my-lib/badge.svg?branch=master)](https://coveralls.io/github/ovanderzee/snap-collect?branch=master)
 
-# contextual-collection
+# snap-collect
 
 Keep subsets of data collections without needing to modify the data itself
 
@@ -11,15 +11,15 @@ Install the package as npm package. Provided are
 a umd-formatted file in the dist folder to require or to just load
 
 ```html
-<script src="../../node_modules/dist/contextualCollection.js"></script>
-<script src="https://unpkg.com/contextual-collection@latest"></script>
+<script src="../../node_modules/dist/snapCollect.js"></script>
+<script src="https://unpkg.com/snap-collect@latest"></script>
 ```
 
 and an es-module in the module folder to import the separate functions
 or to import all
 
 ```js
-import { contextualCollection } from 'contextual-collection'
+import { snapCollect } from 'snap-collect'
 ```
 
 then just call the function
@@ -27,7 +27,7 @@ with the unique identifier of the objects
 to get a ready-to-use object
 
 ```js
-let myCollection = contextualCollection('id')
+let myCollection = snapCollect('id')
 ```
 
 ## Demo
