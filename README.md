@@ -3,7 +3,10 @@
 
 # snap-collect
 
-Keep subsets of data collections without needing to modify the data itself
+Keep subsets of data collections without needing to modify the data itself.
+In this way you do not have set contextual properties (like: selected, isCurrent) on your object
+and risk these properties end up in the database.
+None of the collection-methods change the data or the input: the module has no side-effects
 
 ## Install and usage
 

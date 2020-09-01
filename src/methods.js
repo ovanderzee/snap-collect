@@ -33,7 +33,7 @@ const getMethods = function (identifier) {
             }
         },
 
-        // return arrays
+        // yielding arrays
 
         entries: function () {
             return Object.entries(this)
