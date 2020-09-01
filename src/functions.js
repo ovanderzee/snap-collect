@@ -6,9 +6,9 @@
  * @return {Object} keyed object
  */
 const arrayToPseudoObject = function (foreignArray) {
-    const pseudoObject = Object.create({ keyIdentifier: this.keyIdentifier })
+    const pseudoObject = Object.create({ identifier: this.identifier })
     foreignArray.forEach((data) => {
-        pseudoObject[data[this.keyIdentifier].toString()] = data
+        pseudoObject[data[this.identifier].toString()] = data
     })
     return pseudoObject
 }

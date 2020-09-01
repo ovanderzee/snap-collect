@@ -7,6 +7,7 @@
   </head>
   <body>
     <h3>snapCollect</h3>
+    <h5>look at the console</h5>
     <script>
 const cc = snapCollect('id')
 
@@ -20,6 +21,8 @@ cc.add(tenting)
 cc.add(tweaky)
 cc.add(thirsty)
 
+console.log('object', cc)
+console.log('instanceof SnapCollect', (cc instanceof SnapCollect))
 console.log('keys', JSON.stringify(cc.keys()))
 console.log('values', JSON.stringify(cc.values()))
 
