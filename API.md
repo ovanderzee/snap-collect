@@ -27,8 +27,8 @@
 
 ## snapCollect
 
-Create a new empty SnapCollect object
-The identifier is the unique key used to identify the objects
+Create a new empty SnapCollect object.
+The identifier is the unique key used to identify the objects.
 
 ### Parameters
 
@@ -39,7 +39,7 @@ Returns **SnapCollect**
 ## add
 
 Place (or replace) one or more record,
-get the key for the record from the field specified by the identifier
+get the key for the record from the field specified by the identifier.
 
 ### Parameters
 
@@ -47,7 +47,7 @@ get the key for the record from the field specified by the identifier
 
 ## delete
 
-Delete the data kept with a key, and the key itself
+Delete the data kept with a key, and the key itself.
 
 ### Parameters
 
@@ -55,7 +55,7 @@ Delete the data kept with a key, and the key itself
 
 ## get
 
-Get the data kept with a key
+Get the data kept with a key.
 
 ### Parameters
 
@@ -65,7 +65,7 @@ Returns **[Object][24]** the data
 
 ## has
 
-Examine the existance of a key
+Examine the existance of a key.
 
 ### Parameters
 
@@ -75,13 +75,13 @@ Returns **[Boolean][25]**
 
 ## length
 
-Count the number of records kept
+Count the number of records kept.
 
 Returns **[Number][26]** 
 
 ## set
 
-Place (or replace) a record under a certain key
+Place (or replace) a record under a certain key.
 
 ### Parameters
 
@@ -90,7 +90,7 @@ Place (or replace) a record under a certain key
 
 ## toggle
 
-Place an unkown record or remove a known record
+Place an unkown record or remove a known record.
 
 ### Parameters
 
@@ -99,29 +99,29 @@ Place an unkown record or remove a known record
 
 ## entries
 
-Return all kept records in a two dimensional Array
-using the native Object.entries
+Return all kept records in a two dimensional Array,
+using the native Object.entries.
 
 Returns **[Array][27]** entries
 
 ## keys
 
-Return the keys of all kept records
-using the native Object.keys
+Return the keys of all kept records,
+using the native Object.keys.
 
 Returns **[Array][27]&lt;[String][23]>** entries
 
 ## values
 
-Return the values of all kept records
-using the native Object.values
+Return the values of all kept records,
+using the native Object.values.
 
 Returns **[Array][27]&lt;[Object][24]>** values
 
 ## combination
 
 Find all records from both arrays by identifier,
-with deduplication
+with deduplication.
 
 ### Parameters
 
@@ -131,9 +131,9 @@ Returns **[Array][27]&lt;[Object][24]>** common values, deduplicated
 
 ## intersection
 
-Find records appearing in both own collection and in foreign array
+Find records appearing in both own collection and in foreign array,
 by comparing their identifier,
-with deduplication
+with deduplication.
 
 ### Parameters
 

@@ -7,7 +7,7 @@ const getMethods = function (identifier) {
 
         /**
          * Place (or replace) one or more record,
-         * get the key for the record from the field specified by the identifier
+         * get the key for the record from the field specified by the identifier.
          * @param {Arguments} anonymus - one or more records
          */
         add: function () {
@@ -15,14 +15,14 @@ const getMethods = function (identifier) {
             dataList.forEach((data) => this.set(data[identifier], data))
         },
         /**
-         * Delete the data kept with a key, and the key itself
+         * Delete the data kept with a key, and the key itself.
          * @param {String} key
          */
         delete: function (key) {
             delete this[key.toString()]
         },
         /**
-         * Get the data kept with a key
+         * Get the data kept with a key.
          * @param {String} key
          * @return {Object} the data
          */
@@ -30,7 +30,7 @@ const getMethods = function (identifier) {
             return this[key.toString()]
         },
         /**
-         * Examine the existance of a key
+         * Examine the existance of a key.
          * @param {String} key
          * @return {Boolean}
          */
@@ -38,14 +38,14 @@ const getMethods = function (identifier) {
             return Object.prototype.hasOwnProperty.call(this, key.toString())
         },
         /**
-         * Count the number of records kept
+         * Count the number of records kept.
          * @return {Number}
          */
         get length() {
             return Object.keys(this).length
         },
         /**
-         * Place (or replace) a record under a certain key
+         * Place (or replace) a record under a certain key.
          * @param {String} key
          * @param {Object} data
          */
@@ -53,7 +53,7 @@ const getMethods = function (identifier) {
             this[key.toString()] = data
         },
         /**
-         * Place an unkown record or remove a known record
+         * Place an unkown record or remove a known record.
          * @param {Object}
          */
         toggle: function (data) {
@@ -68,24 +68,24 @@ const getMethods = function (identifier) {
         // yielding arrays
 
         /**
-         * Return all kept records in a two dimensional Array
-         * using the native Object.entries
+         * Return all kept records in a two dimensional Array,
+         * using the native Object.entries.
          * @return {Array} entries
          */
         entries: function () {
             return Object.entries(this)
         },
         /**
-         * Return the keys of all kept records
-         * using the native Object.keys
+         * Return the keys of all kept records,
+         * using the native Object.keys.
          * @return {String[]} entries
          */
         keys: function () {
             return Object.keys(this)
         },
         /**
-         * Return the values of all kept records
-         * using the native Object.values
+         * Return the values of all kept records,
+         * using the native Object.values.
          * @return {Object[]} values
          */
         values: function () {
@@ -94,7 +94,7 @@ const getMethods = function (identifier) {
 
         /**
          * Find all records from both arrays by identifier,
-         * with deduplication
+         * with deduplication.
          * @param {Object[] || snapCollect} foreignItem
          * @return {Object[]} common values, deduplicated
          */
@@ -114,9 +114,9 @@ const getMethods = function (identifier) {
         },
 
         /**
-         * Find records appearing in both own collection and in foreign array
+         * Find records appearing in both own collection and in foreign array,
          * by comparing their identifier,
-         * with deduplication
+         * with deduplication.
          * @param {Object[] || snapCollect} foreignItem
          * @return {Object[]} mutual values, deduplicated
          */

@@ -1,8 +1,8 @@
 import { getMethods } from './methods'
 
 /**
- * Contruct a SnapCollect object
- * The identifier is passed form the main function
+ * Contruct a SnapCollect object.
+ * The identifier is passed form the main function.
  * @private
  * @param {String} identifier
  * @return {Object} the prototype
@@ -22,8 +22,8 @@ const init = function SnapCollect(identifier) {
 }
 
 /**
- * Create a new empty SnapCollect object
- * The identifier is the unique key used to identify the objects
+ * Create a new empty SnapCollect object.
+ * The identifier is the unique key used to identify the objects.
  * @param {String} identifier
  * @return {SnapCollect}
  */
