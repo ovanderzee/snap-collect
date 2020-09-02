@@ -33,6 +33,6 @@ to get a ready-to-use object
 let myCollection = snapCollect('id')
 ```
 
-## Demo
+## Application Programming Interface
 
-[see demo folder](./demo/demo.html)
+[see API description](./API.md)

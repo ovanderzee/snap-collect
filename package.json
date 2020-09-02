@@ -1,12 +1,13 @@
 {
   "name": "snap-collect",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "keep subsets of data collections without needing to modify the data itself",
   "main": "dist/snapCollect.js",
   "module": "module/snapCollect.js",
   "scripts": {
     "prebuild": "cf dist module && prettier './src/**/*.js' --write",
     "build": "rollup --config",
+    "postbuild": "documentation build src/*.js --format md > API.md",
     "coverage": "cf coverage && jest --coverage",
     "once": "npm run test && npm run build",
     "pretest": "eslint src/*.js",
@@ -34,6 +35,7 @@
     "@rollup/plugin-node-resolve": "^9.0.0",
     "clear-folder": "^2.0.0",
     "coveralls": "^3.1.0",
+    "documentation": "^13.0.2",
     "eslint": "^7.2.0",
     "eslint-plugin-jasmine": "^4.1.1",
     "eslint-plugin-jest": "^23.13.2",

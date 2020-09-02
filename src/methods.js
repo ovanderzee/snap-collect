@@ -5,25 +5,57 @@ const getMethods = function (identifier) {
     const methods = {
         // maintenance functions
 
+        /**
+         * Place (or replace) one or more record,
+         * get the key for the record from the field specified by the identifier
+         * @param {Arguments} anonymus - one or more records
+         */
         add: function () {
             const dataList = Array.from(arguments)
             dataList.forEach((data) => this.set(data[identifier], data))
         },
+        /**
+         * Delete the data kept with a key, and the key itself
+         * @param {String} key
+         */
         delete: function (key) {
             delete this[key.toString()]
         },
+        /**
+         * Get the data kept with a key
+         * @param {String} key
+         * @return {Object} the data
+         */
         get: function (key) {
             return this[key.toString()]
         },
+        /**
+         * Examine the existance of a key
+         * @param {String} key
+         * @return {Boolean}
+         */
         has: function (key) {
             return Object.prototype.hasOwnProperty.call(this, key.toString())
         },
+        /**
+         * Count the number of records kept
+         * @return {Number}
+         */
         get length() {
             return Object.keys(this).length
         },
+        /**
+         * Place (or replace) a record under a certain key
+         * @param {String} key
+         * @param {Object} data
+         */
         set: function (key, data) {
             this[key.toString()] = data
         },
+        /**
+         * Place an unkown record or remove a known record
+         * @param {Object}
+         */
         toggle: function (data) {
             const key = data[identifier]
             if (this.has(key)) {
@@ -35,12 +67,27 @@ const getMethods = function (identifier) {
 
         // yielding arrays
 
+        /**
+         * Return all kept records in a two dimensional Array
+         * using the native Object.entries
+         * @return {Array} entries
+         */
         entries: function () {
             return Object.entries(this)
         },
+        /**
+         * Return the keys of all kept records
+         * using the native Object.keys
+         * @return {String[]} entries
+         */
         keys: function () {
             return Object.keys(this)
         },
+        /**
+         * Return the values of all kept records
+         * using the native Object.values
+         * @return {Object[]} values
+         */
         values: function () {
             return Object.values(this)
         },
