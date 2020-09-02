@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/ovanderzee/my-lib.svg?branch=master)](https://travis-ci.org/ovanderzee/snap-collect)
-[![Coverage Status](https://coveralls.io/repos/github/ovanderzee/my-lib/badge.svg?branch=master)](https://coveralls.io/github/ovanderzee/snap-collect?branch=master)
+[![Build Status](https://travis-ci.org/ovanderzee/snap-collect.svg?branch=master)](https://travis-ci.org/ovanderzee/snap-collect)
+[![Coverage Status](https://coveralls.io/repos/github/ovanderzee/snap-collect/badge.svg?branch=master)](https://coveralls.io/github/ovanderzee/snap-collect?branch=master)
 
 # snap-collect
 
