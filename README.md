@@ -8,7 +8,7 @@ In this way you do not have set contextual properties (like: selected, isCurrent
 and risk these properties end up in the database.
 None of the collection-methods change the data or the input: the module has no side-effects
 
-## Install and usage
+## Install
 
 Install the package as npm package. Provided are
 a umd-formatted file in the dist folder to require or to just load
@@ -25,14 +25,33 @@ or to import all
 import { snapCollect } from 'snap-collect'
 ```
 
-then just call the function
+# Usage
+
+Just call the function
 with the unique identifier of the objects
 to get a ready-to-use object
 
 ```js
-let myCollection = snapCollect('id')
+const myCollection = snapCollect('id')
 ```
 
-## Application Programming Interface
+add objects to the snapCollection
+and use these in your script
+
+```js
+record1 = {id: 7324324658, a: 'a' ...}
+myCollection.add(record1, record2, record3)
+myBoolean = myCollection.has(7324365307)
+myCollection.delete(7324365307)
+myCollection.toggle(recordX)
+myCount = myCollection.length
+myKeys = myCollection.keys()
+myRecords = myCollection.values()
+myPagedRecords = myCollection.intersection(pagedRecords)
+```
+
+and more
+
+## API
 
 [see API description](./API.md)

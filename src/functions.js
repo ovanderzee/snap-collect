@@ -24,7 +24,4 @@ const getForeignKeys = function (foreignItem) {
     return Object.keys(foreignItem)
 }
 
-// TODO:
-//   also support Set for input
-
 export { arrayToPseudoObject, getForeignKeys }

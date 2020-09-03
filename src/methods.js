@@ -132,9 +132,6 @@ const getMethods = function (identifier) {
             )
             return mutuals
         },
-
-        // TODO:
-        //   except/excepting
     }
 
     return methods
