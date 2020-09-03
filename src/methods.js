@@ -54,7 +54,7 @@ const getMethods = function (identifier) {
         },
         /**
          * Place an unkown record or remove a known record.
-         * @param {Object}
+         * @param {Object} data
          */
         toggle: function (data) {
             const key = data[identifier]

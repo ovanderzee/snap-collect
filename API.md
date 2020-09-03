@@ -94,8 +94,7 @@ Place an unkown record or remove a known record.
 
 ### Parameters
 
--   `data`  
--   `Object`  
+-   `data` **[Object][24]** 
 
 ## entries
 
