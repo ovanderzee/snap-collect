@@ -62,10 +62,19 @@ describe('Maintenance methods', () => {
     })
 
     describe('Combination method', () => {
-        test('should display all values once', () => {
+        test('should display all values once - with an Array', () => {
             snapCollection.add(...array1)
 
             const newArray = snapCollection.combination(array2)
+
+            expect(newArray).toEqual([tenting, tweaky, thirsty, forthy, vivid])
+        })
+        test('should display shared values once - with another SnapCollect', () => {
+            snapCollection.add(...array1)
+            let otherCollection = snapCollect('id')
+            otherCollection.add(...array2)
+
+            const newArray = snapCollection.combination(otherCollection)
 
             expect(newArray).toEqual([tenting, tweaky, thirsty, forthy, vivid])
         })
