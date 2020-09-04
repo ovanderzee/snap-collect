@@ -16,12 +16,11 @@ const arrayToPseudoObject = function (foreignArray) {
 /**
  * Find our type of keys in a pseudoObject
  * @private
- * @this {SnapCollect}
- * @param {Object || Object[]} foreignItem array or (pseudo) SnapCollect - to relate with
+ * @param {SnapCollect} foreignCollection (pseudo) SnapCollect - to relate with
  * @return {Object[]}
  */
-const getForeignKeys = function (foreignItem) {
-    return Object.keys(foreignItem)
+const getForeignKeys = function (foreignCollection) {
+    return Object.keys(foreignCollection)
 }
 
 export { arrayToPseudoObject, getForeignKeys }

@@ -102,8 +102,7 @@ const getMethods = function (identifier) {
             if (Array.isArray(foreignItem)) {
                 foreignItem = arrayToPseudoObject.call(this, foreignItem)
             }
-            const foreignKeys = getForeignKeys.call(this, foreignItem)
-            if (!foreignKeys) return
+            const foreignKeys = getForeignKeys(foreignItem)
             const commonKeys = arrayCombination(this.keys(), foreignKeys)
             const commons = commonKeys.map((common) => {
                 const domestic = this.get(common.toString())
@@ -124,8 +123,7 @@ const getMethods = function (identifier) {
             if (Array.isArray(foreignItem)) {
                 foreignItem = arrayToPseudoObject.call(this, foreignItem)
             }
-            const foreignKeys = getForeignKeys.call(this, foreignItem)
-            if (!foreignKeys) return
+            const foreignKeys = getForeignKeys(foreignItem)
             const mutualKeys = arrayIntersection(this.keys(), foreignKeys)
             const mutuals = mutualKeys.map((mutual) =>
                 this.get(mutual.toString()),

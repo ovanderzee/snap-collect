@@ -9,6 +9,8 @@ describe('Maintenance methods', () => {
     let vivid
     let array1
     let array2
+    let arrayA
+    let arrayB
 
     beforeEach(() => {
         snapCollection = snapCollect('id')
@@ -19,6 +21,8 @@ describe('Maintenance methods', () => {
         vivid = {id: 50, text: 'vivid'}
         array1 = [tenting, tweaky, thirsty, forthy]
         array2 = [tweaky, thirsty, forthy, vivid]
+        arrayA = [tenting, tweaky]
+        arrayB = [forthy, vivid]
     })
 
     // entries, keys and values rely on native methods
@@ -82,12 +86,28 @@ describe('Maintenance methods', () => {
     })
 
     describe('Intersection method', () => {
-        test('should display shared values once', () => {
+        test('should display shared values once - with an array', () => {
             snapCollection.add(...array1)
 
             const newArray = snapCollection.intersection(array2)
 
             expect(newArray).toEqual([tweaky, thirsty, forthy])
+        })
+        test('should display shared values once - with another SnapCollect', () => {
+            snapCollection.add(...array1)
+            let otherCollection = snapCollect('id')
+            otherCollection.add(...array2)
+
+            const newArray = snapCollection.intersection(otherCollection)
+
+            expect(newArray).toEqual([tweaky, thirsty, forthy])
+        })
+        test('should display no shared values without overlap', () => {
+            snapCollection.add(...arrayA)
+
+            const newArray = snapCollection.intersection(arrayB)
+
+            expect(newArray).toEqual([])
         })
         test('should not change the source values', () => {
             snapCollection.add(...array1)
