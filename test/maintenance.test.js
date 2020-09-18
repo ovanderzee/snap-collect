@@ -5,12 +5,20 @@ describe('Maintenance methods', () => {
     let tenting
     let tweaky
     let thirsty
+    let forthy
+    let vivid
+    let array1
+    let array2
 
     beforeEach(() => {
         snapCollection = snapCollect('id')
         tenting = {id: 10, text: 'tenting'}
         tweaky = {id: 20, text: 'tweaky'}
         thirsty = {id: 30, text: 'thirsty'}
+        forthy = {id: 40, text: 'forthy'}
+        vivid = {id: 50, text: 'vivid'}
+        array1 = [tenting, tweaky, thirsty, forthy]
+        array2 = [tweaky, thirsty, forthy, vivid]
     })
 
     describe('Keeping object as a reference', () => {
@@ -32,6 +40,13 @@ describe('Maintenance methods', () => {
             snapCollection.add(tenting, tweaky, thirsty)
 
             expect(snapCollection.length).toBe(3)
+        })
+        test('should add destructured object-arrays to the collection', () => {
+            expect(snapCollection.length).toBe(0)
+
+            snapCollection.add(...array1, ...array2)
+
+            expect(snapCollection.length).toBe(5)
         })
         test('should not change the input', () => {
             snapCollection.add(tenting, tweaky, thirsty)

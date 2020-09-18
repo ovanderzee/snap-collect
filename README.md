@@ -39,9 +39,10 @@ add objects to the snapCollection
 and use these in your script
 
 ```js
-record1 = {id: 7324324658, a: 'a' ...}
-myCollection.add(record1, record2, record3)
-myBoolean = myCollection.has(7324365307)
+record1 = {id: 7324324658, a: 'a'}
+records = [{id: 4535436507, a: 'b'}, {id: 5934526798, a: 'c'}]
+myCollection.add(record1, record2, ...records)
+myBoolean = myCollection.has(4392432645)
 myCollection.delete(7324365307)
 myCollection.toggle(recordX)
 myCount = myCollection.length
