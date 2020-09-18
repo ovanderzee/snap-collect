@@ -15,6 +15,15 @@ const getMethods = function (identifier) {
             dataList.forEach((data) => this.set(data[identifier], data))
         },
         /**
+         * Delete all data and return to initial state.
+         */
+        clear: function () {
+            const keys = Object.keys(this)
+            for (let key of keys) {
+                delete this[key.toString()]
+            }
+        },
+        /**
          * Delete the data kept with a key, and the key itself.
          * @param {String} key
          */

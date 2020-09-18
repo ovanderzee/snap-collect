@@ -41,6 +41,24 @@ describe('Maintenance methods', () => {
         })
     })
 
+    describe('Clear method', () => {
+        test('should delete all own objects from the collection', () => {
+            snapCollection.add(tenting, tweaky, thirsty)
+
+            snapCollection.clear()
+
+            expect(snapCollection.length).toBe(0)
+        })
+        test('should not change the collection object', () => {
+            snapCollection.add(tenting, tweaky, thirsty)
+            const reference = snapCollection
+
+            snapCollection.clear()
+
+            expect(reference).toBe(snapCollection)
+        })
+    })
+
     describe('Delete method', () => {
         test('should delete an object from the collection', () => {
             snapCollection.add(tenting, tweaky, thirsty)

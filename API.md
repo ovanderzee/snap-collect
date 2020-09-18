@@ -6,24 +6,25 @@
     -   [Parameters][2]
 -   [add][3]
     -   [Parameters][4]
--   [delete][5]
-    -   [Parameters][6]
--   [get][7]
-    -   [Parameters][8]
--   [has][9]
-    -   [Parameters][10]
--   [length][11]
--   [set][12]
-    -   [Parameters][13]
--   [toggle][14]
-    -   [Parameters][15]
--   [entries][16]
--   [keys][17]
--   [values][18]
--   [combination][19]
-    -   [Parameters][20]
--   [intersection][21]
-    -   [Parameters][22]
+-   [clear][5]
+-   [delete][6]
+    -   [Parameters][7]
+-   [get][8]
+    -   [Parameters][9]
+-   [has][10]
+    -   [Parameters][11]
+-   [length][12]
+-   [set][13]
+    -   [Parameters][14]
+-   [toggle][15]
+    -   [Parameters][16]
+-   [entries][17]
+-   [keys][18]
+-   [values][19]
+-   [combination][20]
+    -   [Parameters][21]
+-   [intersection][22]
+    -   [Parameters][23]
 
 ## snapCollect
 
@@ -32,7 +33,7 @@ The identifier is the unique key used to identify the objects.
 
 ### Parameters
 
--   `identifier` **[String][23]** 
+-   `identifier` **[String][24]** 
 
 Returns **SnapCollect** 
 
@@ -45,13 +46,17 @@ get the key for the record from the field specified by the identifier.
 
 -   `anonymus` **Arguments** one or more records
 
+## clear
+
+Delete all data and return to initial state.
+
 ## delete
 
 Delete the data kept with a key, and the key itself.
 
 ### Parameters
 
--   `key` **[String][23]** 
+-   `key` **[String][24]** 
 
 ## get
 
@@ -59,9 +64,9 @@ Get the data kept with a key.
 
 ### Parameters
 
--   `key` **[String][23]** 
+-   `key` **[String][24]** 
 
-Returns **[Object][24]** the data
+Returns **[Object][25]** the data
 
 ## has
 
@@ -69,15 +74,15 @@ Examine the existance of a key.
 
 ### Parameters
 
--   `key` **[String][23]** 
+-   `key` **[String][24]** 
 
-Returns **[Boolean][25]** 
+Returns **[Boolean][26]** 
 
 ## length
 
 Count the number of records kept.
 
-Returns **[Number][26]** 
+Returns **[Number][27]** 
 
 ## set
 
@@ -85,8 +90,8 @@ Place (or replace) a record under a certain key.
 
 ### Parameters
 
--   `key` **[String][23]** 
--   `data` **[Object][24]** 
+-   `key` **[String][24]** 
+-   `data` **[Object][25]** 
 
 ## toggle
 
@@ -94,28 +99,28 @@ Place an unkown record or remove a known record.
 
 ### Parameters
 
--   `data` **[Object][24]** 
+-   `data` **[Object][25]** 
 
 ## entries
 
 Return all kept records in a two dimensional Array,
 using the native Object.entries.
 
-Returns **[Array][27]** entries
+Returns **[Array][28]** entries
 
 ## keys
 
 Return the keys of all kept records,
 using the native Object.keys.
 
-Returns **[Array][27]&lt;[String][23]>** entries
+Returns **[Array][28]&lt;[String][24]>** entries
 
 ## values
 
 Return the values of all kept records,
 using the native Object.values.
 
-Returns **[Array][27]&lt;[Object][24]>** values
+Returns **[Array][28]&lt;[Object][25]>** values
 
 ## combination
 
@@ -126,7 +131,7 @@ with deduplication.
 
 -   `foreignItem`  
 
-Returns **[Array][27]&lt;[Object][24]>** common values, deduplicated
+Returns **[Array][28]&lt;[Object][25]>** common values, deduplicated
 
 ## intersection
 
@@ -138,7 +143,7 @@ with deduplication.
 
 -   `foreignItem`  
 
-Returns **[Array][27]&lt;[Object][24]>** mutual values, deduplicated
+Returns **[Array][28]&lt;[Object][25]>** mutual values, deduplicated
 
 [1]: #snapcollect
 
@@ -148,48 +153,50 @@ Returns **[Array][27]&lt;[Object][24]>** mutual values, deduplicated
 
 [4]: #parameters-1
 
-[5]: #delete
+[5]: #clear
 
-[6]: #parameters-2
+[6]: #delete
 
-[7]: #get
+[7]: #parameters-2
 
-[8]: #parameters-3
+[8]: #get
 
-[9]: #has
+[9]: #parameters-3
 
-[10]: #parameters-4
+[10]: #has
 
-[11]: #length
+[11]: #parameters-4
 
-[12]: #set
+[12]: #length
 
-[13]: #parameters-5
+[13]: #set
 
-[14]: #toggle
+[14]: #parameters-5
 
-[15]: #parameters-6
+[15]: #toggle
 
-[16]: #entries
+[16]: #parameters-6
 
-[17]: #keys
+[17]: #entries
 
-[18]: #values
+[18]: #keys
 
-[19]: #combination
+[19]: #values
 
-[20]: #parameters-7
+[20]: #combination
 
-[21]: #intersection
+[21]: #parameters-7
 
-[22]: #parameters-8
+[22]: #intersection
 
-[23]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[23]: #parameters-8
 
-[24]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[24]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[25]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[25]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[26]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[26]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[27]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[27]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[28]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
