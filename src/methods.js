@@ -87,7 +87,7 @@ const getMethods = function (identifier) {
         /**
          * Return the keys of all kept records,
          * using the native Object.keys.
-         * @return {String[]} entries
+         * @return {String[]} keys
          */
         keys: function () {
             return Object.keys(this)
