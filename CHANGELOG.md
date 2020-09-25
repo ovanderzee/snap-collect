@@ -9,4 +9,3 @@
   the criterion should also play a role in the processing.
 * Support for Set-objects in combination/intersection
 * subtraction, subtractionFrom
-* query
