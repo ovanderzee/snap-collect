@@ -12,7 +12,7 @@
     "once": "npm run test && npm run build",
     "pretest": "eslint src/*.js",
     "test": "jest",
-    "watch": "onchange --initial \"src/**/*.js\" -- npm run once --silent"
+    "watch": "onchange --initial \"(test|src)/**/*.js\" -- npm run once --silent"
   },
   "keywords": [
     "objects",
