@@ -102,6 +102,25 @@ const getMethods = function (identifier) {
         },
 
         /**
+         * Find records satisfing a condition,
+         * using a JSON.stringify comparison.
+         * @param {Object} conditions - one or more conditions
+         * @return {Object[]} provided
+         */
+        where: function (conditions) {
+            let subset = Object.values(this)
+            const compareKeys = Object.keys(conditions)
+            compareKeys.forEach((key) => {
+                subset = subset.filter(
+                    (subsetItem) =>
+                        JSON.stringify(subsetItem[key]) ==
+                        JSON.stringify(conditions[key]),
+                )
+            })
+            return subset
+        },
+
+        /**
          * Find all records from both arrays by identifier,
          * with deduplication.
          * @param {Object[] || snapCollect} foreignItem

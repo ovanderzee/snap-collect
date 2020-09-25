@@ -21,10 +21,12 @@
 -   [entries][17]
 -   [keys][18]
 -   [values][19]
--   [combination][20]
+-   [where][20]
     -   [Parameters][21]
--   [intersection][22]
+-   [combination][22]
     -   [Parameters][23]
+-   [intersection][24]
+    -   [Parameters][25]
 
 ## snapCollect
 
@@ -33,7 +35,7 @@ The identifier is the unique key used to identify the objects.
 
 ### Parameters
 
--   `identifier` **[String][24]** 
+-   `identifier` **[String][26]** 
 
 Returns **SnapCollect** 
 
@@ -56,7 +58,7 @@ Delete the data kept with a key, and the key itself.
 
 ### Parameters
 
--   `key` **[String][24]** 
+-   `key` **[String][26]** 
 
 ## get
 
@@ -64,9 +66,9 @@ Get the data kept with a key.
 
 ### Parameters
 
--   `key` **[String][24]** 
+-   `key` **[String][26]** 
 
-Returns **[Object][25]** the data
+Returns **[Object][27]** the data
 
 ## has
 
@@ -74,15 +76,15 @@ Examine the existance of a key.
 
 ### Parameters
 
--   `key` **[String][24]** 
+-   `key` **[String][26]** 
 
-Returns **[Boolean][26]** 
+Returns **[Boolean][28]** 
 
 ## length
 
 Count the number of records kept.
 
-Returns **[Number][27]** 
+Returns **[Number][29]** 
 
 ## set
 
@@ -90,8 +92,8 @@ Place (or replace) a record under a certain key.
 
 ### Parameters
 
--   `key` **[String][24]** 
--   `data` **[Object][25]** 
+-   `key` **[String][26]** 
+-   `data` **[Object][27]** 
 
 ## toggle
 
@@ -99,28 +101,39 @@ Place an unkown record or remove a known record.
 
 ### Parameters
 
--   `data` **[Object][25]** 
+-   `data` **[Object][27]** 
 
 ## entries
 
 Return all kept records in a two dimensional Array,
 using the native Object.entries.
 
-Returns **[Array][28]** entries
+Returns **[Array][30]** entries
 
 ## keys
 
 Return the keys of all kept records,
 using the native Object.keys.
 
-Returns **[Array][28]&lt;[String][24]>** entries
+Returns **[Array][30]&lt;[String][26]>** keys
 
 ## values
 
 Return the values of all kept records,
 using the native Object.values.
 
-Returns **[Array][28]&lt;[Object][25]>** values
+Returns **[Array][30]&lt;[Object][27]>** values
+
+## where
+
+Find records satisfing a condition,
+using a JSON.stringify comparison.
+
+### Parameters
+
+-   `conditions` **[Object][27]** one or more conditions
+
+Returns **[Array][30]&lt;[Object][27]>** provided
 
 ## combination
 
@@ -131,7 +144,7 @@ with deduplication.
 
 -   `foreignItem`  
 
-Returns **[Array][28]&lt;[Object][25]>** common values, deduplicated
+Returns **[Array][30]&lt;[Object][27]>** common values, deduplicated
 
 ## intersection
 
@@ -143,7 +156,7 @@ with deduplication.
 
 -   `foreignItem`  
 
-Returns **[Array][28]&lt;[Object][25]>** mutual values, deduplicated
+Returns **[Array][30]&lt;[Object][27]>** mutual values, deduplicated
 
 [1]: #snapcollect
 
@@ -183,20 +196,24 @@ Returns **[Array][28]&lt;[Object][25]>** mutual values, deduplicated
 
 [19]: #values
 
-[20]: #combination
+[20]: #where
 
 [21]: #parameters-7
 
-[22]: #intersection
+[22]: #combination
 
 [23]: #parameters-8
 
-[24]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[24]: #intersection
 
-[25]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[25]: #parameters-9
 
-[26]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[26]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[27]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[27]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[28]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[28]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[29]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[30]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array

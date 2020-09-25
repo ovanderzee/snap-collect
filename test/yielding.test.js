@@ -61,6 +61,49 @@ describe('Maintenance methods', () => {
         })
     })
 
+    describe('Where method', () => {
+
+        test('should show a subset with JSON.stringify comparison', () => {
+            snapCollection.add(...array1, {id: 60})
+            const subsetArray = snapCollection.where({text: undefined})
+
+            expect(subsetArray).toEqual([
+                {id: 60},
+            ])
+        })
+
+        test('should show a subset with same-type equality', () => {
+            snapCollection.add(...array1, {id: 60})
+            const subsetArray = snapCollection.where({id: '60'})
+
+            expect(subsetArray).toEqual([])
+        })
+
+        test('should show a subset from multiple comparsions', () => {
+            snapCollection.add(...array1, {id: 60})
+            const subsetArray = snapCollection.where({id: 60, text: undefined})
+
+            expect(subsetArray).toEqual([
+                {id: 60},
+            ])
+        })
+
+        test('should show a subset with same-value objects', () => {
+            const coord = {x: 10, y: 12}
+            snapCollection.add(
+                ...array1,
+                {id: 60, coord: {x: 10, y: 12}},
+                {id: 70, coord: coord},
+            )
+            const subsetArray = snapCollection.where({coord: coord})
+
+            expect(subsetArray).toEqual([
+                {id: 60, coord: {x: 10, y: 12}},
+                {id: 70, coord: {x: 10, y: 12}},
+            ])
+        })
+    })
+
     describe('Combination method', () => {
         test('should display all values once - with an Array', () => {
             snapCollection.add(...array1)
