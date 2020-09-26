@@ -18,8 +18,7 @@ a umd-formatted file in the dist folder to require or to just load
 <script src="https://unpkg.com/snap-collect@latest"></script>
 ```
 
-and an es-module in the module folder to import the separate functions
-or to import all
+and an es-module in the module folder to import
 
 ```js
 import { snapCollect } from 'snap-collect'
@@ -46,13 +45,10 @@ myBoolean = myCollection.has(4392432645)
 myCollection.delete(7324365307)
 myCollection.toggle(recordX)
 myCount = myCollection.length
-myKeys = myCollection.keys()
+myIdentifiers = myCollection.keys()
 myRecords = myCollection.values()
 myPagedRecords = myCollection.intersection(pagedRecords)
 ```
 
-and more
-
-## API
-
+and more:
 [see API description](./API.md)
