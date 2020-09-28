@@ -44,6 +44,7 @@ A definate name with an extended API.
 * automated API documentation
 ### Changed
 * changed name to SnapCollect
+* renamed property 'keyProperty' as 'indentifier'
 * moved API and helper functions to dedicated files
 
 
@@ -59,7 +60,7 @@ Set-up copied from my-lib.
 * demo.html with proofing
 
 
-[ideas]
+## [Ideas]
 
 * Specify a criterion for acceptance || rejection when initialising,
   the criterion should also play a role in the processing.
