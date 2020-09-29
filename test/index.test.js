@@ -22,9 +22,9 @@ describe('SnapCollect recognisability', () => {
     })
 
     test('should include a truthy identifier property on the prototype', () => {
-        expect(snapCollection.__proto__.identifier).toBeTruthy()
+        expect(Object.getPrototypeOf(snapCollection).identifier).toBeTruthy()
     })
     test('should include a name property "SnapCollect" on the prototype ', () => {
-        expect(snapCollection.__proto__.name).toBe('SnapCollect')
+        expect(Object.getPrototypeOf(snapCollection).name).toBe('SnapCollect')
     })
 })
