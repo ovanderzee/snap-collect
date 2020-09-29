@@ -6,8 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [Unreleased]
+
+
+## [0.6.0] - 2020-09-29
+
+Towards production
 ### Changed
 * standardised CHANGELOG to meet [Keep a Changelog](https://keepachangelog.com/nl/1.0.0/)
+* sanitise core methods delete, get, has and set
 
 
 ## [0.5.0] - 2020-09-25

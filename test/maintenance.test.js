@@ -86,6 +86,10 @@ describe('Maintenance methods', () => {
     })
 
     describe('Delete method', () => {
+        const spyKeyMake = jest.spyOn(keying, 'make')
+        beforeEach(() => {
+            jest.clearAllMocks();
+        });
         test('should delete an object from the collection', () => {
             snapCollection.add(tenting, tweaky, thirsty)
 
@@ -103,6 +107,20 @@ describe('Maintenance methods', () => {
             snapCollection.delete(10)
 
             expect(tenting).toEqual({id: 10, text: 'tenting'})
+        })
+        test('should accept usefull keys', () => {
+            acceptable.forEach(accept => {
+                snapCollection.delete(accept)
+            })
+
+            expect(spyKeyMake).toHaveBeenCalledTimes(acceptable.length)
+        })
+        test('should reject useless keys', () => {
+            rejectable.forEach(reject => {
+                snapCollection.delete(reject)
+            })
+
+            expect(spyKeyMake).not.toHaveBeenCalled()
         })
     })
 
