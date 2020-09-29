@@ -1,26 +1,14 @@
 /**
- * Convert an array to a pseudo SnapCollect object
+ * Convert an array to a likewise initialised SnapCollect object
  * @private
  * @this {SnapCollect}
  * @param {Object[]} foreignArray - to convert
  * @return {Object} keyed object
  */
-const arrayToPseudoObject = function (foreignArray) {
-    const pseudoObject = Object.create({ identifier: this.identifier })
-    foreignArray.forEach((data) => {
-        pseudoObject[data[this.identifier].toString()] = data
-    })
-    return pseudoObject
+const arrayToSnapCollect = function (foreignArray) {
+    const foreignCollection = Object.create(Object.getPrototypeOf(this))
+    foreignCollection.add(...foreignArray)
+    return foreignCollection
 }
 
-/**
- * Find our type of keys in a pseudoObject
- * @private
- * @param {SnapCollect} foreignCollection (pseudo) SnapCollect - to relate with
- * @return {Object[]}
- */
-const getForeignKeys = function (foreignCollection) {
-    return Object.keys(foreignCollection)
-}
-
-export { arrayToPseudoObject, getForeignKeys }
+export { arrayToSnapCollect }

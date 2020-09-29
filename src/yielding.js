@@ -1,4 +1,4 @@
-import { arrayToPseudoObject, getForeignKeys } from './functions'
+import { arrayToSnapCollect } from './functions'
 import { arrayIntersection, arrayCombination } from 'my-lib'
 
 const yieldingMethods = {
@@ -56,15 +56,12 @@ const yieldingMethods = {
      */
     combination: function (foreignItem) {
         if (Array.isArray(foreignItem)) {
-            foreignItem = arrayToPseudoObject.call(this, foreignItem)
+            foreignItem = arrayToSnapCollect.call(this, foreignItem)
         }
-        const foreignKeys = getForeignKeys(foreignItem)
-        const commonKeys = arrayCombination(this.keys(), foreignKeys)
-        const commons = commonKeys.map((common) => {
-            const domestic = this.get(common.toString())
-            const foreign = foreignItem[common]
-            return domestic || foreign
-        })
+        const commonKeys = arrayCombination(this.keys(), foreignItem.keys())
+        const commons = commonKeys.map(
+            (key) => this.get(key) || foreignItem.get(key),
+        )
         return commons
     },
 
@@ -77,11 +74,10 @@ const yieldingMethods = {
      */
     intersection: function (foreignItem) {
         if (Array.isArray(foreignItem)) {
-            foreignItem = arrayToPseudoObject.call(this, foreignItem)
+            foreignItem = arrayToSnapCollect.call(this, foreignItem)
         }
-        const foreignKeys = getForeignKeys(foreignItem)
-        const mutualKeys = arrayIntersection(this.keys(), foreignKeys)
-        const mutuals = mutualKeys.map((mutual) => this.get(mutual.toString()))
+        const mutualKeys = arrayIntersection(this.keys(), foreignItem.keys())
+        const mutuals = mutualKeys.map((key) => this.get(key))
         return mutuals
     },
 }
