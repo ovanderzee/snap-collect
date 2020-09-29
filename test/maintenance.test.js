@@ -1,4 +1,5 @@
 import snapCollect from '../src/index'
+import { keying } from '../src/functions'
 
 describe('Maintenance methods', () => {
     let snapCollection
@@ -9,6 +10,9 @@ describe('Maintenance methods', () => {
     let vivid
     let array1
     let array2
+
+    const rejectable = ['', NaN, null, undefined]
+    const acceptable = [new Date(1234567890123), /^x/, ()=>{}]
 
     beforeEach(() => {
         snapCollection = snapCollect('id')
@@ -72,6 +76,13 @@ describe('Maintenance methods', () => {
 
             expect(reference).toBe(snapCollection)
         })
+        test('should not break the API', () => {
+            snapCollection.add(tenting, tweaky, thirsty)
+
+            snapCollection.clear()
+
+            expect(typeof snapCollection.clear).toBe('function')
+        })
     })
 
     describe('Delete method', () => {
@@ -96,6 +107,10 @@ describe('Maintenance methods', () => {
     })
 
     describe('Get method', () => {
+        const spyKeyMake = jest.spyOn(keying, 'make')
+        beforeEach(() => {
+            jest.clearAllMocks();
+        });
         test('should get an object from the collection', () => {
             snapCollection.add(tenting, tweaky, thirsty)
 
@@ -110,9 +125,27 @@ describe('Maintenance methods', () => {
 
             expect(subject).toEqual({id: 10, text: 'tenting'})
         })
+        test('should accept usefull keys', () => {
+            acceptable.forEach(accept => {
+                snapCollection.get(accept)
+            })
+
+            expect(spyKeyMake).toHaveBeenCalledTimes(acceptable.length)
+        })
+        test('should reject useless keys', () => {
+            rejectable.forEach(reject => {
+                snapCollection.get(reject)
+            })
+
+            expect(spyKeyMake).not.toHaveBeenCalled()
+        })
     })
 
     describe('Has method', () => {
+        const spyHasOwnProp = jest.spyOn(Object.prototype, 'hasOwnProperty')
+        beforeEach(() => {
+            jest.clearAllMocks();
+        });
         test('should test whether the collection has an object', () => {
             snapCollection.add(tenting, tweaky, thirsty)
 
@@ -126,6 +159,20 @@ describe('Maintenance methods', () => {
             const bool = snapCollection.has(10)
 
             expect(snapCollection.get(10)).toEqual({id: 10, text: 'tenting'})
+        })
+        test('should accept usefull keys', () => {
+            acceptable.forEach(accept => {
+                snapCollection.has(accept)
+            })
+
+            expect(spyHasOwnProp).toHaveBeenCalledTimes(acceptable.length)
+        })
+        test('should reject useless keys', () => {
+            rejectable.forEach(reject => {
+                snapCollection.has(reject)
+            })
+
+            expect(spyHasOwnProp).not.toHaveBeenCalled()
         })
     })
 
@@ -151,6 +198,19 @@ describe('Maintenance methods', () => {
 
             expect(snapCollection.get(thirsty.id)).toEqual({id: 30, text: 'thirsty'})
         })
+        test('should accept usefull keys', () => {
+            const length = snapCollection.length
+            acceptable.forEach(accept => snapCollection.set(accept, thirsty))
+            // console.log('keys', snapCollection.keys())
+
+            expect(snapCollection.length).toBe(acceptable.length)
+        })
+        test('should reject useless keys', () => {
+            const length = snapCollection.length
+            rejectable.forEach(reject => snapCollection.set(reject, thirsty))
+
+            expect(snapCollection.length).toBe(length)
+        })
     })
 
     describe('Toggle method', () => {
@@ -173,4 +233,5 @@ describe('Maintenance methods', () => {
             expect(tweaky).toEqual({id: 20, text: 'tweaky'})
         })
     })
+
 })

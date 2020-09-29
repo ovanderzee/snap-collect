@@ -1,3 +1,5 @@
+import { keying } from './functions'
+
 const getMainMethods = function (identifier) {
     const methods = {
         // maintenance functions
@@ -25,7 +27,8 @@ const getMainMethods = function (identifier) {
          * @param {String} key
          */
         delete: function (key) {
-            delete this[key.toString()]
+            if (!keying.test(key)) return
+            delete this[keying.make(key)]
         },
         /**
          * Get the data kept with a key.
@@ -33,7 +36,8 @@ const getMainMethods = function (identifier) {
          * @return {Object} the data
          */
         get: function (key) {
-            return this[key.toString()]
+            if (!keying.test(key)) return
+            return this[keying.make(key)]
         },
         /**
          * Examine the existance of a key.
@@ -41,7 +45,8 @@ const getMainMethods = function (identifier) {
          * @return {Boolean}
          */
         has: function (key) {
-            return Object.prototype.hasOwnProperty.call(this, key.toString())
+            if (!keying.test(key)) return
+            return Object.prototype.hasOwnProperty.call(this, keying.make(key))
         },
         /**
          * Count the number of records kept.
@@ -56,7 +61,8 @@ const getMainMethods = function (identifier) {
          * @param {Object} data
          */
         set: function (key, data) {
-            this[key.toString()] = data
+            if (!keying.test(key)) return
+            this[keying.make(key)] = data
         },
         /**
          * Place an unkown record or remove a known record.
