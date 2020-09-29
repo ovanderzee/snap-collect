@@ -17,7 +17,7 @@ const getMainMethods = function (identifier) {
         clear: function () {
             const keys = Object.keys(this)
             for (let key of keys) {
-                delete this[key.toString()]
+                this.delete(key)
             }
         },
         /**
