@@ -69,6 +69,25 @@ describe('Maintenance methods', () => {
         })
     })
 
+    describe('Cross method', () => {
+        test('should confine the collection the intersection with a foreign item', () => {
+            snapCollection.add(...array1)
+
+            expect(snapCollection.length).toBe(4)
+
+            snapCollection.cross(array2)
+
+            expect(snapCollection.length).toBe(3)
+        })
+        test('should not change the input', () => {
+            snapCollection.add(...array1)
+            snapCollection.cross(array2)
+
+            expect(array1).toEqual([tenting, tweaky, thirsty, forthy])
+            expect(array2).toEqual([tweaky, thirsty, forthy, vivid])
+        })
+    })
+
     describe('Drop method', () => {
         const collection = [
             {id:1, action:'cut', text:'bye'},

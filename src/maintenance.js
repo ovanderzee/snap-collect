@@ -1,4 +1,4 @@
-import { conditionalDeleting } from './functions'
+import { conditionalDeleting, arrayToSnapCollect } from './functions'
 
 const getMainMethods = function (identifier) {
     const methods = {
@@ -20,6 +20,22 @@ const getMainMethods = function (identifier) {
             const keys = Object.keys(this)
             for (let key of keys) {
                 this.delete(key)
+            }
+        },
+        /**
+         * Confine collection to intersection with array.
+         * @param {Object[] || SnapCollect} foreignItem
+         */
+        cross: function (foreignItem) {
+            if (Array.isArray(foreignItem)) {
+                foreignItem = arrayToSnapCollect.call(this, foreignItem)
+            }
+            const foreignKeys = foreignItem.keys()
+            const keys = Object.keys(this)
+            for (let key of keys) {
+                if (!foreignKeys.includes(key)) {
+                    this.delete(key)
+                }
             }
         },
         /**
