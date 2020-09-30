@@ -1,3 +1,5 @@
+import { conditionalDeleting } from './functions'
+
 const getMainMethods = function (identifier) {
     const methods = {
         // maintenance functions
@@ -19,6 +21,22 @@ const getMainMethods = function (identifier) {
             for (let key of keys) {
                 this.delete(key)
             }
+        },
+        /**
+         * Delete data satisfing all conditions,
+         * using a JSON.stringify comparison.
+         * @param {Object} conditions - one or more conditions
+         */
+        drop: function (conditions) {
+            conditionalDeleting.call(this, conditions, true)
+        },
+        /**
+         * Confine collection to the data satisfing all conditions,
+         * using a JSON.stringify comparison.
+         * @param {Object} conditions - one or more conditions
+         */
+        hold: function (conditions) {
+            conditionalDeleting.call(this, conditions, false)
         },
         /**
          * Place an unkown record or remove a known record.

@@ -69,6 +69,58 @@ describe('Maintenance methods', () => {
         })
     })
 
+    describe('Drop method', () => {
+        const collection = [
+            {id:1, action:'cut', text:'bye'},
+            {id:2, action:'drop', text:'bye'},
+            {id:3, action:'drop', text:'adios'},
+        ]
+        test('should remove matching objects from the collection', () => {
+            snapCollection.add(...collection)
+
+            expect(snapCollection.length).toBe(3)
+
+            snapCollection.drop({action: 'drop'})
+
+            expect(snapCollection.length).toBe(1)
+        })
+        test('should operate and-wise', () => {
+            snapCollection.add(...collection)
+
+            expect(snapCollection.length).toBe(3)
+
+            snapCollection.drop({action:'drop', text:'bye'})
+
+            expect(snapCollection.length).toBe(2)
+        })
+    })
+
+    describe('Hold method', () => {
+        const collection = [
+            {id:1, action:'hold', text:'hi'},
+            {id:2, action:'keep', text:'hi'},
+            {id:3, action:'keep', text:'hello'},
+        ]
+        test('should remove matching objects from the collection', () => {
+            snapCollection.add(...collection)
+
+            expect(snapCollection.length).toBe(3)
+
+            snapCollection.hold({action: 'keep'})
+
+            expect(snapCollection.length).toBe(2)
+        })
+        test('should operate and-wise', () => {
+            snapCollection.add(...collection)
+
+            expect(snapCollection.length).toBe(3)
+
+            snapCollection.hold({action:'keep', text:'hi'})
+
+            expect(snapCollection.length).toBe(1)
+        })
+    })
+
     describe('Toggle method', () => {
         test('should toggle the existence of an object in the collection', () => {
             snapCollection.toggle(tweaky)

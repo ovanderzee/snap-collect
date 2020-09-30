@@ -30,7 +30,7 @@ const yieldingMethods = {
     },
 
     /**
-     * Find records satisfing a condition,
+     * Find records satisfing all conditions,
      * using a JSON.stringify comparison.
      * @param {Object} conditions - one or more conditions
      * @return {Object[]} provided
@@ -41,7 +41,7 @@ const yieldingMethods = {
         compareKeys.forEach((key) => {
             subset = subset.filter(
                 (subsetItem) =>
-                    JSON.stringify(subsetItem[key]) ==
+                    JSON.stringify(subsetItem[key]) ===
                     JSON.stringify(conditions[key]),
             )
         })

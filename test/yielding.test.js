@@ -79,7 +79,7 @@ describe('Maintenance methods', () => {
             expect(subsetArray).toEqual([])
         })
 
-        test('should show a subset from multiple comparsions', () => {
+        test('should show a subset matching all comparsions', () => {
             snapCollection.add(...array1, {id: 60})
             const subsetArray = snapCollection.where({id: 60, text: undefined})
 
