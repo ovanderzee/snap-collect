@@ -86,6 +86,8 @@ get the key for the record from the field specified by the identifier.
 
 -   `anonymus` **Arguments** one or more records
 
+Returns **[Array][36]&lt;[Object][33]>** all current data
+
 ## clear
 
 Delete all data and return to initial state.
@@ -98,6 +100,8 @@ Confine collection to intersection with array.
 
 -   `foreignItem`  
 
+Returns **[Array][36]&lt;[Object][33]>** all current data
+
 ## drop
 
 Delete data satisfing all conditions,
@@ -106,6 +110,8 @@ using a JSON.stringify comparison.
 ### Parameters
 
 -   `conditions` **[Object][33]** one or more conditions
+
+Returns **[Array][36]&lt;[Object][33]>** all current data
 
 ## hold
 
@@ -116,13 +122,17 @@ using a JSON.stringify comparison.
 
 -   `conditions` **[Object][33]** one or more conditions
 
+Returns **[Array][36]&lt;[Object][33]>** all current data
+
 ## toggle
 
 Place an unkown record or remove a known record.
 
 ### Parameters
 
--   `data` **[Object][33]** 
+-   `data` **[Object][33]** one unit
+
+Returns **[Array][36]&lt;[Object][33]>** all current data
 
 ## snapCollect
 

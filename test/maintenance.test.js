@@ -42,6 +42,11 @@ describe('Maintenance methods', () => {
             expect(snapCollection.get(10)).toBe(tenting)
             expect(snapCollection.get(10)).toEqual({id: 10, text: 'tenting'})
         })
+        test('should return an array with current values', () => {
+            const all = snapCollection.add(tenting, tweaky, thirsty)
+
+            expect(all).toEqual([tenting, tweaky, thirsty])
+        })
     })
 
     describe('Clear method', () => {
@@ -67,6 +72,12 @@ describe('Maintenance methods', () => {
 
             expect(typeof snapCollection.clear).toBe('function')
         })
+        test('should not return anything', () => {
+            snapCollection.clear(vivid, thirsty)
+            const all = snapCollection.clear()
+
+            expect(all).toEqual(undefined)
+        })
     })
 
     describe('Cross method', () => {
@@ -85,6 +96,12 @@ describe('Maintenance methods', () => {
 
             expect(array1).toEqual([tenting, tweaky, thirsty, forthy])
             expect(array2).toEqual([tweaky, thirsty, forthy, vivid])
+        })
+        test('should return an array with current values', () => {
+            snapCollection.add(...array1)
+            const all = snapCollection.cross(array2)
+
+            expect(all).toEqual([tweaky, thirsty, forthy])
         })
     })
 
@@ -112,6 +129,15 @@ describe('Maintenance methods', () => {
 
             expect(snapCollection.length).toBe(2)
         })
+        test('should return an array with current values', () => {
+            snapCollection.add(...collection)
+            const all = snapCollection.drop({action:'drop', text:'bye'})
+
+            expect(all).toEqual([
+                {id:1, action:'cut', text:'bye'},
+                {id:3, action:'drop', text:'adios'},
+            ])
+        })
     })
 
     describe('Hold method', () => {
@@ -138,6 +164,14 @@ describe('Maintenance methods', () => {
 
             expect(snapCollection.length).toBe(1)
         })
+        test('should return an array with current values', () => {
+            snapCollection.add(...collection)
+            const all = snapCollection.hold({action:'keep', text:'hi'})
+
+            expect(all).toEqual([
+                {id:2, action:'keep', text:'hi'},
+            ])
+        })
     })
 
     describe('Toggle method', () => {
@@ -158,6 +192,12 @@ describe('Maintenance methods', () => {
             snapCollection.toggle(tweaky)
 
             expect(tweaky).toEqual({id: 20, text: 'tweaky'})
+        })
+        test('should return an array with current values', () => {
+            snapCollection.add(...array1)
+            const all = snapCollection.toggle(tweaky)
+
+            expect(all).toEqual([tenting, thirsty, forthy])
         })
     })
 
