@@ -1,6 +1,6 @@
 {
   "name": "snap-collect",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "keep subsets of data collections without needing to modify the data itself",
   "main": "dist/snapCollect.js",
   "module": "module/snapCollect.js",
