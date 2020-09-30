@@ -2,21 +2,21 @@
 
 ### Table of Contents
 
--   [snapCollect][1]
+-   [delete][1]
     -   [Parameters][2]
--   [add][3]
+-   [get][3]
     -   [Parameters][4]
--   [clear][5]
--   [delete][6]
-    -   [Parameters][7]
--   [get][8]
+-   [has][5]
+    -   [Parameters][6]
+-   [length][7]
+-   [set][8]
     -   [Parameters][9]
--   [has][10]
+-   [add][10]
     -   [Parameters][11]
--   [length][12]
--   [set][13]
+-   [clear][12]
+-   [toggle][13]
     -   [Parameters][14]
--   [toggle][15]
+-   [snapCollect][15]
     -   [Parameters][16]
 -   [entries][17]
 -   [keys][18]
@@ -27,30 +27,6 @@
     -   [Parameters][23]
 -   [intersection][24]
     -   [Parameters][25]
-
-## snapCollect
-
-Create a new empty SnapCollect object.
-The identifier is the unique key used to identify the objects.
-
-### Parameters
-
--   `identifier` **[String][26]** 
-
-Returns **SnapCollect** 
-
-## add
-
-Place (or replace) one or more record,
-get the key for the record from the field specified by the identifier.
-
-### Parameters
-
--   `anonymus` **Arguments** one or more records
-
-## clear
-
-Delete all data and return to initial state.
 
 ## delete
 
@@ -95,6 +71,19 @@ Place (or replace) a record under a certain key.
 -   `key` **[String][26]** 
 -   `data` **[Object][27]** 
 
+## add
+
+Place (or replace) one or more record,
+get the key for the record from the field specified by the identifier.
+
+### Parameters
+
+-   `anonymus` **Arguments** one or more records
+
+## clear
+
+Delete all data and return to initial state.
+
 ## toggle
 
 Place an unkown record or remove a known record.
@@ -102,6 +91,17 @@ Place an unkown record or remove a known record.
 ### Parameters
 
 -   `data` **[Object][27]** 
+
+## snapCollect
+
+Create a new empty SnapCollect object.
+The identifier is the unique key used to identify the objects.
+
+### Parameters
+
+-   `identifier` **[String][26]** 
+
+Returns **SnapCollect** 
 
 ## entries
 
@@ -158,35 +158,35 @@ with deduplication.
 
 Returns **[Array][30]&lt;[Object][27]>** mutual values, deduplicated
 
-[1]: #snapcollect
+[1]: #delete
 
 [2]: #parameters
 
-[3]: #add
+[3]: #get
 
 [4]: #parameters-1
 
-[5]: #clear
+[5]: #has
 
-[6]: #delete
+[6]: #parameters-2
 
-[7]: #parameters-2
+[7]: #length
 
-[8]: #get
+[8]: #set
 
 [9]: #parameters-3
 
-[10]: #has
+[10]: #add
 
 [11]: #parameters-4
 
-[12]: #length
+[12]: #clear
 
-[13]: #set
+[13]: #toggle
 
 [14]: #parameters-5
 
-[15]: #toggle
+[15]: #snapcollect
 
 [16]: #parameters-6
 

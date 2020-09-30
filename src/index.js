@@ -1,3 +1,4 @@
+import { methods } from './core'
 import { getMainMethods } from './maintenance'
 import { yieldingMethods } from './yielding'
 
@@ -14,13 +15,12 @@ const init = function SnapCollect(identifier) {
     const errMsg = 'snapCollect: identifier must evaluate to true'
     if (!accept) throw errMsg
 
-    // build methods object
-    const methods = getMainMethods(identifier)
-    Object.assign(methods, yieldingMethods)
-
     // set characteristic SnapCollect properties
     methods.identifier = identifier
     methods.name = 'SnapCollect'
+
+    // append methods object
+    Object.assign(methods, getMainMethods(identifier), yieldingMethods)
 
     return methods
 }
