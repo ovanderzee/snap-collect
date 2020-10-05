@@ -83,6 +83,25 @@ describe('Maintenance methods', () => {
     describe('Cross method', () => {
         test('should confine the collection the intersection with a foreign item', () => {
             snapCollection.add(...array1)
+            expect(snapCollection.length).toBe(4)
+            const snapCollection2 = snapCollect('id')
+            snapCollection2.add(...array2)
+            expect(snapCollection2.length).toBe(4)
+
+            snapCollection.cross(snapCollection2)
+            snapCollection2.cross(snapCollection)
+
+            const crossCollection = snapCollection.values()
+            expect(crossCollection).toEqual(snapCollection2.values())
+            crossCollection.forEach(value => {
+                expect(array1).toContain(value)
+                expect(array2).toContain(value)
+            });
+            expect(crossCollection).not.toContain(tenting)
+            expect(crossCollection).not.toContain(vivid)
+        })
+        test('should work with an array', () => {
+            snapCollection.add(...array1)
 
             expect(snapCollection.length).toBe(4)
 
