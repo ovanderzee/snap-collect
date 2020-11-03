@@ -39,7 +39,6 @@ const yieldingMethods = {
         const badVariables = [undefined, null]
         for (let i = arguments.length - 1; i > -1; i--) {
             const prop = arguments[i]
-            console.log('prop', prop)
             sorted.sort(function (a, b) {
                 if (isUsableNumber(a[prop], b[prop])) {
                     return a[prop] - b[prop]
