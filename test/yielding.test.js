@@ -61,6 +61,107 @@ describe('Maintenance methods', () => {
         })
     })
 
+    describe('Sort method', () => {
+
+        let sortOfFun
+
+        beforeEach(() => {
+            sortOfFun = [
+                {id: 10, level: 10, text: 'tan'},
+                {id: 11, level: 10, text: 'zen'},
+                {id: 20, level: 50, text: 'vivid'},
+                {id: 21, level: 50, text: 'fixie'},
+                {id: 30, level: 3, text: 'tree'},
+                {id: 31, level: 3, text: 'eat'},
+            ]
+        })
+
+        test('should show all values', () => {
+            snapCollection.add(...sortOfFun)
+            const sortedArray = snapCollection.sort('text')
+
+            sortOfFun.forEach(item => {
+                expect(sortedArray).toContain(item)
+            })
+        })
+
+        test('should show string values sorted ascending', () => {
+            snapCollection.add(...sortOfFun)
+            const textSort = snapCollection.sort('text')
+
+            expect(textSort).toEqual([
+                {id: 31, level: 3, text: 'eat'},
+                {id: 21, level: 50, text: 'fixie'},
+                {id: 10, level: 10, text: 'tan'},
+                {id: 30, level: 3, text: 'tree'},
+                {id: 20, level: 50, text: 'vivid'},
+                {id: 11, level: 10, text: 'zen' },
+            ])
+        })
+
+        test('should show numeric values sorted ascending', () => {
+            snapCollection.add(...sortOfFun)
+            const numericSort = snapCollection.sort('level')
+
+            expect(numericSort).toEqual([
+                {id: 30, level: 3, text: 'tree'},
+                {id: 31, level: 3, text: 'eat'},
+                {id: 10, level: 10, text: 'tan'},
+                {id: 11, level: 10, text: 'zen' },
+                {id: 20, level: 50, text: 'vivid'},
+                {id: 21, level: 50, text: 'fixie'},
+            ])
+        })
+
+        test('should show all values double sorted ascending', () => {
+            snapCollection.add(...sortOfFun)
+            const ascendingSort = snapCollection.sort('level', 'text')
+
+            expect(ascendingSort).toEqual([
+                {id: 31, level: 3, text: 'eat'},
+                {id: 30, level: 3, text: 'tree'},
+                {id: 10, level: 10, text: 'tan'},
+                {id: 11, level: 10, text: 'zen' },
+                {id: 21, level: 50, text: 'fixie'},
+                {id: 20, level: 50, text: 'vivid'},
+            ])
+        })
+
+        test('should deal with records missing some fields 1', () => {
+            snapCollection.add(...sortOfFun)
+            snapCollection.add({id: 12, level: 10}, {id: 13, text: 'then'})
+            const ascendingSort = snapCollection.sort('level', 'text')
+
+            expect(ascendingSort).toEqual([
+                {id: 31, level: 3, text: 'eat'},
+                {id: 30, level: 3, text: 'tree'},
+                {id: 10, level: 10, text: 'tan'},
+                {id: 11, level: 10, text: 'zen' },
+                {id: 12, level: 10},
+                {id: 21, level: 50, text: 'fixie'},
+                {id: 20, level: 50, text: 'vivid'},
+                {id: 13, text: 'then'},
+            ])
+        })
+
+        test('should deal with records missing some fields 2', () => {
+            snapCollection.add(...sortOfFun)
+            snapCollection.add({id: 12, level: 10}, {id: 13, text: 'then'})
+            const ascendingSort = snapCollection.sort('text', 'level')
+
+            expect(ascendingSort).toEqual([
+                {id: 31, level: 3, text: 'eat'},
+                {id: 21, level: 50, text: 'fixie'},
+                {id: 10, level: 10, text: 'tan'},
+                {id: 13, text: 'then'},
+                {id: 30, level: 3, text: 'tree'},
+                {id: 20, level: 50, text: 'vivid'},
+                {id: 11, level: 10, text: 'zen' },
+                {id: 12, level: 10},
+            ])
+        })
+    })
+
     describe('Where method', () => {
 
         test('should show a subset with JSON.stringify comparison', () => {

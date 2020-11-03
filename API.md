@@ -27,12 +27,14 @@
 -   [entries][23]
 -   [keys][24]
 -   [values][25]
--   [where][26]
+-   [sort][26]
     -   [Parameters][27]
--   [combination][28]
+-   [where][28]
     -   [Parameters][29]
--   [intersection][30]
+-   [combination][30]
     -   [Parameters][31]
+-   [intersection][32]
+    -   [Parameters][33]
 
 ## delete
 
@@ -40,7 +42,7 @@ Delete the data kept with a key, and the key itself.
 
 ### Parameters
 
--   `key` **[String][32]** 
+-   `key` **[String][34]** 
 
 ## get
 
@@ -48,9 +50,9 @@ Get the data kept with a key.
 
 ### Parameters
 
--   `key` **[String][32]** 
+-   `key` **[String][34]** 
 
-Returns **[Object][33]** the data
+Returns **[Object][35]** the data
 
 ## has
 
@@ -58,15 +60,15 @@ Examine the existance of a key.
 
 ### Parameters
 
--   `key` **[String][32]** 
+-   `key` **[String][34]** 
 
-Returns **[Boolean][34]** 
+Returns **[Boolean][36]** 
 
 ## length
 
 Count the number of records kept.
 
-Returns **[Number][35]** 
+Returns **[Number][37]** 
 
 ## set
 
@@ -74,8 +76,8 @@ Place (or replace) a record under a certain key.
 
 ### Parameters
 
--   `key` **[String][32]** 
--   `data` **[Object][33]** 
+-   `key` **[String][34]** 
+-   `data` **[Object][35]** 
 
 ## add
 
@@ -86,7 +88,7 @@ get the key for the record from the field specified by the identifier.
 
 -   `anonymus` **Arguments** one or more records
 
-Returns **[Array][36]&lt;[Object][33]>** all current data
+Returns **[Array][38]&lt;[Object][35]>** all current data
 
 ## clear
 
@@ -100,7 +102,7 @@ Confine collection to intersection with array.
 
 -   `foreignItem`  
 
-Returns **[Array][36]&lt;[Object][33]>** all current data
+Returns **[Array][38]&lt;[Object][35]>** all current data
 
 ## drop
 
@@ -109,9 +111,9 @@ using a JSON.stringify comparison.
 
 ### Parameters
 
--   `conditions` **[Object][33]** one or more conditions
+-   `conditions` **[Object][35]** one or more conditions
 
-Returns **[Array][36]&lt;[Object][33]>** all current data
+Returns **[Array][38]&lt;[Object][35]>** all current data
 
 ## hold
 
@@ -120,9 +122,9 @@ using a JSON.stringify comparison.
 
 ### Parameters
 
--   `conditions` **[Object][33]** one or more conditions
+-   `conditions` **[Object][35]** one or more conditions
 
-Returns **[Array][36]&lt;[Object][33]>** all current data
+Returns **[Array][38]&lt;[Object][35]>** all current data
 
 ## toggle
 
@@ -130,9 +132,9 @@ Place an unkown record or remove a known record.
 
 ### Parameters
 
--   `data` **[Object][33]** one unit
+-   `data` **[Object][35]** one unit
 
-Returns **[Array][36]&lt;[Object][33]>** all current data
+Returns **[Array][38]&lt;[Object][35]>** all current data
 
 ## snapCollect
 
@@ -141,7 +143,7 @@ The identifier is the unique key used to identify the objects.
 
 ### Parameters
 
--   `identifier` **[String][32]** 
+-   `identifier` **[String][34]** 
 
 Returns **SnapCollect** 
 
@@ -150,21 +152,31 @@ Returns **SnapCollect**
 Return all kept records in a two dimensional Array,
 using the native Object.entries.
 
-Returns **[Array][36]** entries
+Returns **[Array][38]** entries
 
 ## keys
 
 Return the keys of all kept records,
 using the native Object.keys.
 
-Returns **[Array][36]&lt;[String][32]>** keys
+Returns **[Array][38]&lt;[String][34]>** keys
 
 ## values
 
 Return the values of all kept records,
 using the native Object.values.
 
-Returns **[Array][36]&lt;[Object][33]>** values
+Returns **[Array][38]&lt;[Object][35]>** values
+
+## sort
+
+Return ascending sorted values of all kept records,
+
+### Parameters
+
+-   `anonymus` **Arguments** one or more property names to sort on
+
+Returns **[Array][38]&lt;[Object][35]>** sorted records
 
 ## where
 
@@ -173,9 +185,9 @@ using a JSON.stringify comparison.
 
 ### Parameters
 
--   `conditions` **[Object][33]** one or more conditions
+-   `conditions` **[Object][35]** one or more conditions
 
-Returns **[Array][36]&lt;[Object][33]>** provided
+Returns **[Array][38]&lt;[Object][35]>** subset of records
 
 ## combination
 
@@ -186,7 +198,7 @@ with deduplication.
 
 -   `foreignItem`  
 
-Returns **[Array][36]&lt;[Object][33]>** common values, deduplicated
+Returns **[Array][38]&lt;[Object][35]>** common values, deduplicated
 
 ## intersection
 
@@ -198,7 +210,7 @@ with deduplication.
 
 -   `foreignItem`  
 
-Returns **[Array][36]&lt;[Object][33]>** mutual values, deduplicated
+Returns **[Array][38]&lt;[Object][35]>** mutual values, deduplicated
 
 [1]: #delete
 
@@ -250,24 +262,28 @@ Returns **[Array][36]&lt;[Object][33]>** mutual values, deduplicated
 
 [25]: #values
 
-[26]: #where
+[26]: #sort
 
 [27]: #parameters-10
 
-[28]: #combination
+[28]: #where
 
 [29]: #parameters-11
 
-[30]: #intersection
+[30]: #combination
 
 [31]: #parameters-12
 
-[32]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[32]: #intersection
 
-[33]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[33]: #parameters-13
 
-[34]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[34]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[35]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[35]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[36]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[36]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[37]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[38]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array

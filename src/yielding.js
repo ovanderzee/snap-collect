@@ -1,5 +1,5 @@
 import { arrayToSnapCollect } from './functions'
-import { arrayIntersection, arrayCombination } from 'my-lib'
+import { arrayIntersection, arrayCombination, isUsableNumber } from 'my-lib'
 
 const yieldingMethods = {
     // yielding arrays
@@ -30,10 +30,43 @@ const yieldingMethods = {
     },
 
     /**
+     * Return ascending sorted values of all kept records,
+     * @param {Arguments} anonymus - one or more property names to sort on
+     * @return {Object[]} sorted records
+     */
+    sort: function () {
+        const sorted = Object.values(this)
+        const badVariables = [undefined, null]
+        for (let i = arguments.length - 1; i > -1; i--) {
+            const prop = arguments[i]
+            console.log('prop', prop)
+            sorted.sort(function (a, b) {
+                if (isUsableNumber(a[prop], b[prop])) {
+                    return a[prop] - b[prop]
+                }
+                if (badVariables.includes(a[prop])) {
+                    return sorted.length
+                }
+                if (badVariables.includes(b[prop])) {
+                    return 0 - sorted.length
+                }
+                if (a[prop].toString && b[prop].toString) {
+                    let valueA = a[prop].toString()
+                    let valueB = b[prop].toString()
+                    return valueA.localeCompare(valueB)
+                }
+
+                return
+            })
+        }
+        return sorted
+    },
+
+    /**
      * Find records satisfing all conditions,
      * using a JSON.stringify comparison.
      * @param {Object} conditions - one or more conditions
-     * @return {Object[]} provided
+     * @return {Object[]} subset of records
      */
     where: function (conditions) {
         let subset = Object.values(this)
