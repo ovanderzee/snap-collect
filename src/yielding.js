@@ -1,5 +1,10 @@
 import { arrayToSnapCollect } from './functions'
-import { arrayIntersection, arrayCombination, isUsableNumber } from 'my-lib'
+import {
+    arrayIntersection,
+    arrayCombination,
+    isUsableNumber,
+    forceStringify,
+} from 'my-lib'
 
 const yieldingMethods = {
     // yielding arrays
@@ -30,32 +35,40 @@ const yieldingMethods = {
     },
 
     /**
-     * Return ascending sorted values of all kept records,
-     * @param {Arguments} anonymus - one or more property names to sort on
+     * Return ascending sorted values of all kept records
+     * @param {Arguments} anonymus - one or more property names to sort on, most important property first
      * @return {Object[]} sorted records
      */
     sort: function () {
         const sorted = Object.values(this)
-        const badVariables = [undefined, null]
+        const lacksToString = function (value) {
+            try {
+                return !value.toString
+            } catch (e) {
+                return true
+            }
+        }
         for (let i = arguments.length - 1; i > -1; i--) {
             const prop = arguments[i]
             sorted.sort(function (a, b) {
                 if (isUsableNumber(a[prop], b[prop])) {
                     return a[prop] - b[prop]
                 }
-                if (badVariables.includes(a[prop])) {
-                    return sorted.length
-                }
-                if (badVariables.includes(b[prop])) {
-                    return 0 - sorted.length
-                }
-                if (a[prop].toString && b[prop].toString) {
-                    let valueA = a[prop].toString()
-                    let valueB = b[prop].toString()
+                if (lacksToString(a[prop]) && lacksToString(b[prop])) {
+                    const valueA = forceStringify(a[prop])
+                    const valueB = forceStringify(a[prop])
                     return valueA.localeCompare(valueB)
                 }
-
-                return
+                if (lacksToString(a[prop])) {
+                    return sorted.length
+                }
+                if (lacksToString(b[prop])) {
+                    return 0 - sorted.length
+                }
+                // here, everything has a toString method
+                const valueA = a[prop].toString()
+                const valueB = b[prop].toString()
+                return valueA.localeCompare(valueB)
             })
         }
         return sorted

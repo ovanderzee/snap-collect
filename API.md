@@ -170,11 +170,11 @@ Returns **[Array][38]&lt;[Object][35]>** values
 
 ## sort
 
-Return ascending sorted values of all kept records,
+Return ascending sorted values of all kept records
 
 ### Parameters
 
--   `anonymus` **Arguments** one or more property names to sort on
+-   `anonymus` **Arguments** one or more property names to sort on, most important property first
 
 Returns **[Array][38]&lt;[Object][35]>** sorted records
 

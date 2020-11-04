@@ -95,7 +95,7 @@ describe('Maintenance methods', () => {
                 {id: 10, level: 10, text: 'tan'},
                 {id: 30, level: 3, text: 'tree'},
                 {id: 20, level: 50, text: 'vivid'},
-                {id: 11, level: 10, text: 'zen' },
+                {id: 11, level: 10, text: 'zen'},
             ])
         })
 
@@ -107,13 +107,13 @@ describe('Maintenance methods', () => {
                 {id: 30, level: 3, text: 'tree'},
                 {id: 31, level: 3, text: 'eat'},
                 {id: 10, level: 10, text: 'tan'},
-                {id: 11, level: 10, text: 'zen' },
+                {id: 11, level: 10, text: 'zen'},
                 {id: 20, level: 50, text: 'vivid'},
                 {id: 21, level: 50, text: 'fixie'},
             ])
         })
 
-        test('should show all values double sorted ascending', () => {
+        test('should show all values multiple sorted ascending', () => {
             snapCollection.add(...sortOfFun)
             const ascendingSort = snapCollection.sort('level', 'text')
 
@@ -121,43 +121,81 @@ describe('Maintenance methods', () => {
                 {id: 31, level: 3, text: 'eat'},
                 {id: 30, level: 3, text: 'tree'},
                 {id: 10, level: 10, text: 'tan'},
-                {id: 11, level: 10, text: 'zen' },
+                {id: 11, level: 10, text: 'zen'},
                 {id: 21, level: 50, text: 'fixie'},
                 {id: 20, level: 50, text: 'vivid'},
+            ])
+        })
+
+        test('should deal with records containing null values', () => {
+            snapCollection.add(...sortOfFun)
+            snapCollection.add(
+                {id: 12, level: 10, text: null},
+                {id: 13, level: null, text: 'then'},
+                {id: 14, level: 10, text: null},
+                {id: 15, level: null, text: 'tan'},
+            )
+            const nullSort = snapCollection.sort('level', 'text')
+
+            expect(nullSort).toEqual([
+                {id: 31, level: 3, text: 'eat'},
+                {id: 30, level: 3, text: 'tree'},
+                {id: 10, level: 10, text: 'tan'},
+                {id: 11, level: 10, text: 'zen'},
+                {id: 12, level: 10, text: null},
+                {id: 14, level: 10, text: null},
+                {id: 21, level: 50, text: 'fixie'},
+                {id: 20, level: 50, text: 'vivid'},
+                {id: 15, level: null, text: 'tan'},
+                {id: 13, level: null, text: 'then'},
             ])
         })
 
         test('should deal with records missing some fields 1', () => {
             snapCollection.add(...sortOfFun)
-            snapCollection.add({id: 12, level: 10}, {id: 13, text: 'then'})
+            snapCollection.add(
+                {id: 12, level: 10},
+                {id: 13, text: 'then'},
+                {id: 14, level: 10},
+                {id: 15, text: 'tan'},
+            )
             const ascendingSort = snapCollection.sort('level', 'text')
 
             expect(ascendingSort).toEqual([
                 {id: 31, level: 3, text: 'eat'},
                 {id: 30, level: 3, text: 'tree'},
                 {id: 10, level: 10, text: 'tan'},
-                {id: 11, level: 10, text: 'zen' },
+                {id: 11, level: 10, text: 'zen'},
                 {id: 12, level: 10},
+                {id: 14, level: 10},
                 {id: 21, level: 50, text: 'fixie'},
                 {id: 20, level: 50, text: 'vivid'},
+                {id: 15, text: 'tan'},
                 {id: 13, text: 'then'},
             ])
         })
 
         test('should deal with records missing some fields 2', () => {
             snapCollection.add(...sortOfFun)
-            snapCollection.add({id: 12, level: 10}, {id: 13, text: 'then'})
+            snapCollection.add(
+                {id: 12, level: 10},
+                {id: 13, text: 'then'},
+                {id: 14, level: 10},
+                {id: 15, text: 'tan'},
+            )
             const ascendingSort = snapCollection.sort('text', 'level')
 
             expect(ascendingSort).toEqual([
                 {id: 31, level: 3, text: 'eat'},
                 {id: 21, level: 50, text: 'fixie'},
                 {id: 10, level: 10, text: 'tan'},
+                {id: 15, text: 'tan'},
                 {id: 13, text: 'then'},
                 {id: 30, level: 3, text: 'tree'},
                 {id: 20, level: 50, text: 'vivid'},
-                {id: 11, level: 10, text: 'zen' },
+                {id: 11, level: 10, text: 'zen'},
                 {id: 12, level: 10},
+                {id: 14, level: 10},
             ])
         })
     })
