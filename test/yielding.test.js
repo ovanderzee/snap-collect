@@ -1,6 +1,6 @@
 import snapCollect from '../src/index'
 
-describe('Maintenance methods', () => {
+describe('Yielding methods', () => {
     let snapCollection
     let tenting
     let tweaky

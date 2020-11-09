@@ -1,7 +1,7 @@
 import snapCollect from '../src/index'
 import { keying } from '../src/functions'
 
-describe('Maintenance methods', () => {
+describe('Core methods', () => {
     let snapCollection
     let tenting
     let tweaky

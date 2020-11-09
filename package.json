@@ -48,6 +48,6 @@
     "rollup-plugin-terser": "^6.1.0"
   },
   "dependencies": {
-    "my-lib": "^1.6.0"
+    "my-lib": "^1.6.1"
   }
 }
