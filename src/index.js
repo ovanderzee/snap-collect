@@ -1,10 +1,10 @@
-import { methods } from './core'
-import { getMainMethods } from './maintenance'
+import { addSnapCollectProperties } from './functions'
+import { coreMethods } from './core'
+import { maintenanceMethods } from './maintenance'
 import { yieldingMethods } from './yielding'
 
 /**
- * Contruct a SnapCollect object.
- * The identifier is passed form the main function.
+ * Construct a SnapCollect object.
  * @private
  * @param {String} identifier
  * @return {Object} the prototype
@@ -15,25 +15,22 @@ const init = function SnapCollect(identifier) {
     const errMsg = 'snapCollect: identifier must evaluate to true'
     if (!accept) throw errMsg
 
-    // set characteristic SnapCollect properties
-    methods.identifier = identifier
-    methods.name = 'SnapCollect'
+    // append coreMethods object
+    Object.assign(coreMethods, maintenanceMethods, yieldingMethods)
 
-    // append methods object
-    Object.assign(methods, getMainMethods(identifier), yieldingMethods)
-
-    return methods
+    return coreMethods
 }
 
 /**
  * Create a new empty SnapCollect object.
- * The identifier is the unique key used to identify the objects.
- * @param {String} identifier
+ * @param {String} identifier - unique key identifing the objects.
  * @return {SnapCollect}
  */
 const snapCollect = function (identifier) {
     const methods = init(identifier)
-    return Object.create(methods)
+    const collection = Object.create(methods)
+    addSnapCollectProperties(collection, identifier)
+    return collection
 }
 
 export default snapCollect

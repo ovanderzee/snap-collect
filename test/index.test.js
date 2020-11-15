@@ -1,4 +1,3 @@
-
 import snapCollect from '../src/index'
 
 describe('SnapCollect initialise', () => {
@@ -21,10 +20,27 @@ describe('SnapCollect recognisability', () => {
         snapCollection = snapCollect('index')
     })
 
-    test('should include a truthy identifier property on the prototype', () => {
-        expect(Object.getPrototypeOf(snapCollection).identifier).toBeTruthy()
+    test('should include a truthy identifier property', () => {
+        expect(snapCollection.identifier).toBeTruthy()
     })
-    test('should include a name property "SnapCollect" on the prototype ', () => {
-        expect(Object.getPrototypeOf(snapCollection).name).toBe('SnapCollect')
+    test('should include a name property "SnapCollect"', () => {
+        expect(snapCollection.name).toBe('SnapCollect')
+    })
+})
+
+describe('SnapCollect instance integrity', () => {
+    let collection1
+    let collection2
+
+    beforeEach(() => {
+        collection1 = snapCollect('index')
+        collection2 = snapCollect('key')
+    })
+
+    test('should work with varying indentifiers', () => {
+        expect(collection1.identifier).not.toBe(collection2.identifier)
+    })
+    test('should work with the same prototype', () => {
+        expect(collection1.add).toBe(collection2.add)
     })
 })

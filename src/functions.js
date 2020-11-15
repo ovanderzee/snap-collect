@@ -21,6 +21,23 @@ const keying = {
 }
 
 /**
+ * Set characteristic SnapCollect properties
+ * @private
+ * @param {Object} collection - the instance
+ * @param {String} identifier - instance specific property
+ */
+const addSnapCollectProperties = function (collection, identifier) {
+    Object.defineProperties(collection, {
+        identifier: {
+            value: identifier,
+        },
+        name: {
+            value: 'SnapCollect',
+        },
+    })
+}
+
+/**
  * Convert an array to a likewise initialised SnapCollect object
  * @private
  * @this {SnapCollect}
@@ -29,18 +46,9 @@ const keying = {
  */
 const arrayToSnapCollect = function (foreignArray) {
     const foreignCollection = Object.create(Object.getPrototypeOf(this))
+    addSnapCollectProperties(foreignCollection, this.identifier)
     foreignCollection.add(...foreignArray)
     return foreignCollection
-}
-
-/**
- * Get identifier from initialised SnapCollect object,
- * @private
- * @param {SnapCollect} collection - initialised SnapCollect object
- * @return {String} identifier
- */
-const getIdentifier = function (collection) {
-    return Object.getPrototypeOf(collection).identifier
 }
 
 /**
@@ -53,7 +61,7 @@ const getIdentifier = function (collection) {
 const conditionalDeleting = function (conditions, isAction) {
     const conditionsEntries = Object.entries(conditions)
     const values = Object.values(this)
-    const identifier = getIdentifier(this)
+
     for (let value of values) {
         let satisfing = true
         conditionsEntries.forEach((condition) => {
@@ -62,8 +70,13 @@ const conditionalDeleting = function (conditions, isAction) {
                 JSON.stringify(value[condition[0]]) ===
                     JSON.stringify(condition[1])
         })
-        if (satisfing === isAction) this.delete(value[identifier])
+        if (satisfing === isAction) this.delete(value[this.identifier])
     }
 }
 
-export { keying, arrayToSnapCollect, conditionalDeleting }
+export {
+    keying,
+    addSnapCollectProperties,
+    arrayToSnapCollect,
+    conditionalDeleting,
+}

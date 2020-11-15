@@ -11,18 +11,18 @@
 -   [length][7]
 -   [set][8]
     -   [Parameters][9]
--   [add][10]
+-   [snapCollect][10]
     -   [Parameters][11]
--   [clear][12]
--   [cross][13]
-    -   [Parameters][14]
--   [drop][15]
+-   [add][12]
+    -   [Parameters][13]
+-   [clear][14]
+-   [cross][15]
     -   [Parameters][16]
--   [hold][17]
+-   [drop][17]
     -   [Parameters][18]
--   [toggle][19]
+-   [hold][19]
     -   [Parameters][20]
--   [snapCollect][21]
+-   [toggle][21]
     -   [Parameters][22]
 -   [entries][23]
 -   [keys][24]
@@ -79,10 +79,20 @@ Place (or replace) a record under a certain key.
 -   `key` **[String][34]** 
 -   `data` **[Object][35]** 
 
+## snapCollect
+
+Create a new empty SnapCollect object.
+
+### Parameters
+
+-   `identifier` **[String][34]** unique key identifing the objects.
+
+Returns **SnapCollect** 
+
 ## add
 
 Place (or replace) one or more record,
-get the key for the record from the field specified by the identifier.
+get the key for the record from the field specified by the this.identifier.
 
 ### Parameters
 
@@ -135,17 +145,6 @@ Place an unkown record or remove a known record.
 -   `data` **[Object][35]** one unit
 
 Returns **[Array][38]&lt;[Object][35]>** all current data
-
-## snapCollect
-
-Create a new empty SnapCollect object.
-The identifier is the unique key used to identify the objects.
-
-### Parameters
-
--   `identifier` **[String][34]** 
-
-Returns **SnapCollect** 
 
 ## entries
 
@@ -230,29 +229,29 @@ Returns **[Array][38]&lt;[Object][35]>** mutual values, deduplicated
 
 [9]: #parameters-3
 
-[10]: #add
+[10]: #snapcollect
 
 [11]: #parameters-4
 
-[12]: #clear
+[12]: #add
 
-[13]: #cross
+[13]: #parameters-5
 
-[14]: #parameters-5
+[14]: #clear
 
-[15]: #drop
+[15]: #cross
 
 [16]: #parameters-6
 
-[17]: #hold
+[17]: #drop
 
 [18]: #parameters-7
 
-[19]: #toggle
+[19]: #hold
 
 [20]: #parameters-8
 
-[21]: #snapcollect
+[21]: #toggle
 
 [22]: #parameters-9
 

@@ -1,6 +1,6 @@
 import { keying } from './functions'
 
-const methods = {
+const coreMethods = {
     // core functions
 
     /**
@@ -47,4 +47,4 @@ const methods = {
     },
 }
 
-export { methods }
+export { coreMethods }
