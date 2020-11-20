@@ -37,8 +37,8 @@ describe('SnapCollect instance integrity', () => {
         collection2 = snapCollect('key')
     })
 
-    test('should work with varying indentifiers', () => {
-        expect(collection1.identifier).not.toBe(collection2.identifier)
+    test('should work with varying identifiers', () => {
+        expect(collection1.identifier).not.toEqual(collection2.identifier)
     })
     test('should work with the same prototype', () => {
         expect(collection1.add).toBe(collection2.add)

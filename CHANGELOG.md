@@ -58,7 +58,7 @@ A definate name with an extended API.
 * automated API documentation
 ### Changed
 * changed name to SnapCollect
-* renamed property 'keyProperty' as 'indentifier'
+* renamed property 'keyProperty' as 'identifier'
 * moved API and helper functions to dedicated files
 
 
