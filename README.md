@@ -54,7 +54,6 @@ myCount = myCollection.length
 myCollection.set(7324324658, record1)
 
 // maintenance methods
-add clear cross drop hold toggle
 myRecords = myCollection.add(record1, record2, ...records)
 myCollection.clear()
 myRecords = myCollection.cross(records)
